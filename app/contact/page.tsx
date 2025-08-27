@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
 import Link from "next/link"
 import { SectionHeading } from "@/components/section-heading"
@@ -7,48 +9,49 @@ import { ScrollAnimation } from "@/components/scroll-animation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
 import { Linkedin, Mail, Github, Send, CheckCircle, FileText, MapPin, Phone } from "lucide-react"
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "El nombre debe tener al menos 2 caracteres.",
-  }),
-  email: z.string().email({
-    message: "Por favor ingresa un correo electrónico válido.",
-  }),
-  subject: z.string().min(5, {
-    message: "El asunto debe tener al menos 5 caracteres.",
-  }),
-  message: z.string().min(10, {
-    message: "El mensaje debe tener al menos 10 caracteres.",
-  }),
-})
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+
+    // Validación básica
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      alert("Por favor completa todos los campos")
+      return
+    }
+
+    // Simular envío del formulario
+    console.log("Form data:", formData)
+    setTimeout(() => {
+      setIsSubmitted(true)
+    }, 1000)
+  }
+
+  const resetForm = () => {
+    setIsSubmitted(false)
+    setFormData({
       name: "",
       email: "",
       subject: "",
       message: "",
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // En una aplicación real, enviarías los datos del formulario a tu servidor
-    console.log(values)
-
-    // Simular envío del formulario
-    setTimeout(() => {
-      setIsSubmitted(true)
-    }, 1000)
+    })
   }
 
   return (
@@ -168,77 +171,77 @@ export default function ContactPage() {
                     <p className="text-muted-foreground mb-6">
                       Gracias por contactarme. Te responderé lo antes posible.
                     </p>
-                    <Button onClick={() => setIsSubmitted(false)}>Enviar otro mensaje</Button>
+                    <Button onClick={resetForm}>Enviar otro mensaje</Button>
                   </div>
                 ) : (
                   <>
                     <h2 className="text-2xl font-bold mb-6">Enviar un mensaje</h2>
-                    <Form {...form}>
-                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <div className="grid sm:grid-cols-2 gap-6">
-                          <FormField
-                            control={form.control}
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label htmlFor="name" className="text-sm font-medium">
+                            Nombre
+                          </label>
+                          <Input
+                            id="name"
                             name="name"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Nombre</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Tu nombre" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-
-                          <FormField
-                            control={form.control}
-                            name="email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel>Email</FormLabel>
-                                <FormControl>
-                                  <Input placeholder="Tu email" {...field} />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
+                            placeholder="Tu nombre"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required
                           />
                         </div>
 
-                        <FormField
-                          control={form.control}
+                        <div className="space-y-2">
+                          <label htmlFor="email" className="text-sm font-medium">
+                            Email
+                          </label>
+                          <Input
+                            id="email"
+                            name="email"
+                            type="email"
+                            placeholder="Tu email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label htmlFor="subject" className="text-sm font-medium">
+                          Asunto
+                        </label>
+                        <Input
+                          id="subject"
                           name="subject"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Asunto</FormLabel>
-                              <FormControl>
-                                <Input placeholder="Asunto del mensaje" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
+                          placeholder="Asunto del mensaje"
+                          value={formData.subject}
+                          onChange={handleInputChange}
+                          required
                         />
+                      </div>
 
-                        <FormField
-                          control={form.control}
+                      <div className="space-y-2">
+                        <label htmlFor="message" className="text-sm font-medium">
+                          Mensaje
+                        </label>
+                        <Textarea
+                          id="message"
                           name="message"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormLabel>Mensaje</FormLabel>
-                              <FormControl>
-                                <Textarea placeholder="Tu mensaje" className="min-h-[150px]" {...field} />
-                              </FormControl>
-                              <FormMessage />
-                            </FormItem>
-                          )}
+                          placeholder="Tu mensaje"
+                          className="min-h-[150px]"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
                         />
+                      </div>
 
-                        <Button type="submit" className="w-full">
-                          <Send className="mr-2 h-4 w-4" />
-                          Enviar mensaje
-                        </Button>
-                      </form>
-                    </Form>
+                      <Button type="submit" className="w-full">
+                        <Send className="mr-2 h-4 w-4" />
+                        Enviar mensaje
+                      </Button>
+                    </form>
                   </>
                 )}
               </div>
