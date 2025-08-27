@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { z } from "zod"
 import { Linkedin, Mail, Github, Send, CheckCircle, FileText, MapPin, Phone } from "lucide-react"
 
 const formSchema = z.object({
