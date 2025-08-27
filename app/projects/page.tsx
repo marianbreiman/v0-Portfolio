@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Image from "next/image"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { ArrowRight } from "lucide-react"
 
@@ -25,87 +24,40 @@ export default function ProjectsPage() {
       {/* Projects Grid */}
       <section className="py-16">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Multitravel.com",
-                category: "Product Designer",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Lideré el diseño de soluciones para la industria de viajes, alineando objetivos de negocio con necesidades reales de usuarios. Me enfoqué en la optimización del funnel de conversión, mejora continua de producto, diseño de experiencias móviles y escritorio.",
-                link: "/projects/multitravel",
-              },
-              {
-                title: "Tutenlabs",
-                category: "UX/UI Designer",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Diseñé plataformas internas para gestión de operaciones. Colaboré con equipos de desarrollo en sprints ágiles, definiendo flujos complejos, wireframes y prototipos funcionales.",
-                link: "/projects/tutenlabs",
-              },
-              {
-                title: "Coderhouse",
-                category: "UX/UI Design Tutor",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Guié a estudiantes en la creación de proyectos reales, reforzando conceptos de accesibilidad, arquitectura de información, research y diseño visual.",
-                link: "/projects/coderhouse",
-              },
-              {
-                title: "Orbit",
-                category: "Junior UX/UI Designer",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Trabajé en el rediseño de sitios corporativos con foco en mobile-first y accesibilidad. Participé en testeo de usabilidad y definiciones visuales.",
-                link: "/projects/orbit",
-              },
-              {
-                title: "Proyecto Personal: App de Finanzas",
-                category: "UX/UI Design",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Diseñé una aplicación de gestión financiera personal con enfoque en la simplicidad y la visualización de datos para ayudar a los usuarios a tomar mejores decisiones financieras.",
-                link: "/projects/finanzas-app",
-              },
-              {
-                title: "Proyecto Personal: E-commerce",
-                category: "Product Design",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Desarrollé un concepto de e-commerce con enfoque en la experiencia de compra móvil, optimizando el proceso de checkout y la navegación por categorías.",
-                link: "/projects/ecommerce",
-              },
-            ].map((project, index) => (
-              <ScrollAnimation key={index} delay={index * 100} className="group">
-                <Link href={project.link} className="block">
-                  <div className="overflow-hidden rounded-lg border bg-card transition-all duration-300 hover:shadow-lg">
-                    <div className="relative h-64 overflow-hidden">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <div className="text-white">
-                          <p className="text-sm font-medium">{project.category}</p>
-                          <h3 className="text-xl font-bold">{project.title}</h3>
-                        </div>
+          <div className="grid md:grid-cols-1 gap-8">
+            {/* Future Project - Featured */}
+            <ScrollAnimation className="group">
+              <Link href="/projects/future" className="block">
+                <div className="overflow-hidden rounded-lg border bg-card transition-all duration-300 hover:shadow-lg">
+                  <div className="relative h-[400px] overflow-hidden">
+                    <div className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                      <div className="text-center p-8">
+                        <h2 className="text-3xl font-bold text-blue-600 mb-4">Future</h2>
+                        <p className="text-lg text-blue-800 dark:text-blue-300">Camina hacia el futuro</p>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{project.category}</p>
-                      <p className="text-muted-foreground mb-4">{project.description}</p>
-                      <div className="flex items-center text-primary font-medium group-hover:underline">
-                        Ver caso de estudio
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                      <div className="text-white">
+                        <p className="text-sm font-medium mb-2">UX/UI Design</p>
+                        <h3 className="text-2xl font-bold">Proyecto Future</h3>
                       </div>
                     </div>
                   </div>
-                </Link>
-              </ScrollAnimation>
-            ))}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">Proyecto Future</h3>
+                    <p className="text-sm text-muted-foreground mb-4">UX/UI Design</p>
+                    <p className="text-muted-foreground mb-4">
+                      Aplicación que ayuda a estudiantes a elegir su carrera universitaria y dónde estudiarla,
+                      proporcionando información sobre carreras, universidades y becas.
+                    </p>
+                    <div className="flex items-center text-primary font-medium group-hover:underline">
+                      Ver caso de estudio
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </ScrollAnimation>
           </div>
         </div>
       </section>

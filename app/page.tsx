@@ -194,51 +194,35 @@ export default function Home() {
             />
           </ScrollAnimation>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Multitravel.com",
-                category: "Diseño de Producto",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Optimización del funnel de conversión y mejora continua del producto para la industria de viajes.",
-                link: "/projects/multitravel",
-              },
-              {
-                title: "Tutenlabs",
-                category: "Diseño UX/UI",
-                image: "/placeholder.svg?height=600&width=800",
-                description:
-                  "Diseño de plataformas internas para gestión de operaciones con flujos complejos y prototipos funcionales.",
-                link: "/projects/tutenlabs",
-              },
-            ].map((project, index) => (
-              <ScrollAnimation key={index} delay={index * 200} className="group">
-                <Link href={project.link} className="block">
-                  <div className="overflow-hidden rounded-lg border bg-card transition-all duration-300 hover:shadow-lg">
-                    <div className="relative h-64 overflow-hidden">
-                      <Image
-                        src={project.image || "/placeholder.svg"}
-                        alt={project.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                        <div className="text-white">
-                          <p className="text-sm font-medium">{project.category}</p>
-                          <h3 className="text-xl font-bold">{project.title}</h3>
-                        </div>
+          <div className="grid md:grid-cols-1 gap-8">
+            <ScrollAnimation className="group">
+              <Link href="/projects/future" className="block">
+                <div className="overflow-hidden rounded-lg border bg-card transition-all duration-300 hover:shadow-lg">
+                  <div className="relative h-64 overflow-hidden">
+                    <div className="absolute inset-0 bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
+                      <div className="text-center p-8">
+                        <h2 className="text-3xl font-bold text-blue-600 mb-4">Future</h2>
+                        <p className="text-lg text-blue-800 dark:text-blue-300">Camina hacia el futuro</p>
                       </div>
                     </div>
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4">{project.category}</p>
-                      <p className="text-muted-foreground">{project.description}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <div className="text-white">
+                        <p className="text-sm font-medium">UX/UI Design</p>
+                        <h3 className="text-xl font-bold">Proyecto Future</h3>
+                      </div>
                     </div>
                   </div>
-                </Link>
-              </ScrollAnimation>
-            ))}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2">Proyecto Future</h3>
+                    <p className="text-sm text-muted-foreground mb-4">UX/UI Design</p>
+                    <p className="text-muted-foreground">
+                      Aplicación que ayuda a estudiantes a elegir su carrera universitaria y dónde estudiarla,
+                      proporcionando información sobre carreras, universidades y becas.
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            </ScrollAnimation>
           </div>
 
           <div className="mt-10 text-center">

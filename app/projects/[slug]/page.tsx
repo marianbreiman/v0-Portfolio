@@ -1,10 +1,4 @@
-import Image from "next/image"
-import Link from "next/link"
-import { notFound } from "next/navigation"
-import { SectionHeading } from "@/components/section-heading"
-import { ScrollAnimation } from "@/components/scroll-animation"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import { redirect } from "next/navigation"
 
 // Mock project data - in a real app, this would come from a database or CMS
 const projects = [
@@ -127,173 +121,39 @@ const projects = [
       "The Financial Dashboard has helped users improve their investment performance by providing clear insights and actionable information. User engagement has increased by 60% compared to the previous version of the platform.",
     nextProject: "health-track",
   },
+  {
+    slug: "future",
+    title: "Future Project",
+    category: "Upcoming Project",
+    client: "FutureClient",
+    year: "2024",
+    role: "UX/UI Designer",
+    heroImage: "/placeholder.svg?height=800&width=1600",
+    overview: "Details of the future project will be revealed soon.",
+    challenge: "The challenge is to design a project that meets future client needs and exceeds expectations.",
+    solution: "I will design a user interface that is innovative, user-friendly, and meets the client's requirements.",
+    process: [],
+    outcome: "The outcome will be a successful project that is well-received by the client and users.",
+    nextProject: "",
+  },
 ]
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug)
+// Lista de proyectos válidos
+const validProjects = ["future"]
 
-  if (!project) {
-    notFound()
+export default function ProjectPage({ params }: { params: { slug: string } }) {
+  // Si el slug es válido, redirigir a la ruta específica
+  if (validProjects.includes(params.slug)) {
+    redirect(`/projects/${params.slug}`)
   }
 
-  const nextProject = projects.find((p) => p.slug === project.nextProject)
+  // Si no es un proyecto válido, redirigir a Future por defecto
+  redirect("/projects/future")
+}
 
-  return (
-    <div className="pt-24">
-      {/* Hero Section */}
-      <section className="py-12 md:py-20">
-        <div className="container">
-          <ScrollAnimation>
-            <Button variant="ghost" asChild className="mb-8">
-              <Link href="/projects" className="flex items-center">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Projects
-              </Link>
-            </Button>
-          </ScrollAnimation>
-
-          <ScrollAnimation>
-            <div className="max-w-3xl mb-12">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">{project.title}</h1>
-              <p className="text-xl text-muted-foreground">{project.category}</p>
-            </div>
-          </ScrollAnimation>
-
-          <ScrollAnimation delay={200}>
-            <div className="relative h-[300px] md:h-[500px] rounded-lg overflow-hidden mb-12">
-              <Image src={project.heroImage || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <ScrollAnimation className="space-y-2">
-              <h3 className="font-bold">Client</h3>
-              <p>{project.client}</p>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={100} className="space-y-2">
-              <h3 className="font-bold">Year</h3>
-              <p>{project.year}</p>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={200} className="space-y-2">
-              <h3 className="font-bold">Role</h3>
-              <p>{project.role}</p>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={300} className="space-y-2">
-              <h3 className="font-bold">Deliverables</h3>
-              <p>UX Research, UI Design, Prototyping</p>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
-
-      {/* Overview Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container">
-          <div className="grid md:grid-cols-2 gap-12">
-            <ScrollAnimation>
-              <SectionHeading title="Overview" className="mb-6" />
-              <div className="prose dark:prose-invert">
-                <p>{project.overview}</p>
-              </div>
-            </ScrollAnimation>
-
-            <div>
-              <ScrollAnimation delay={100}>
-                <SectionHeading title="Challenge" className="mb-6" />
-                <div className="prose dark:prose-invert">
-                  <p>{project.challenge}</p>
-                </div>
-              </ScrollAnimation>
-
-              <ScrollAnimation delay={200} className="mt-8">
-                <SectionHeading title="Solution" className="mb-6" />
-                <div className="prose dark:prose-invert">
-                  <p>{project.solution}</p>
-                </div>
-              </ScrollAnimation>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-16">
-        <div className="container">
-          <ScrollAnimation>
-            <SectionHeading
-              title="Design Process"
-              subtitle="A look at how the project evolved from concept to completion."
-              centered
-            />
-          </ScrollAnimation>
-
-          <div className="space-y-24 mt-16">
-            {project.process.map((step, index) => (
-              <ScrollAnimation key={index}>
-                <div
-                  className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "md:grid-flow-dense" : ""}`}
-                >
-                  <div className={index % 2 === 1 ? "md:col-start-2" : ""}>
-                    <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                    <p className="text-muted-foreground mb-6">{step.description}</p>
-                  </div>
-
-                  <div className={index % 2 === 1 ? "md:col-start-1" : ""}>
-                    <div className="relative h-[300px] rounded-lg overflow-hidden border">
-                      <Image src={step.image || "/placeholder.svg"} alt={step.title} fill className="object-cover" />
-                    </div>
-                  </div>
-                </div>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Outcome Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container">
-          <ScrollAnimation>
-            <SectionHeading title="Outcome" subtitle="The impact and results of the project." centered />
-
-            <div className="max-w-3xl mx-auto text-center mt-8">
-              <p className="text-lg">{project.outcome}</p>
-            </div>
-          </ScrollAnimation>
-        </div>
-      </section>
-
-      {/* Next Project Section */}
-      {nextProject && (
-        <section className="py-16">
-          <div className="container">
-            <ScrollAnimation>
-              <div className="text-center">
-                <h2 className="text-2xl font-bold mb-8">Next Project</h2>
-                <Link href={`/projects/${nextProject.slug}`} className="group">
-                  <div className="relative h-[300px] rounded-lg overflow-hidden">
-                    <Image
-                      src={nextProject.heroImage || "/placeholder.svg"}
-                      alt={nextProject.title}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
-                      <div className="text-white">
-                        <p className="text-sm font-medium mb-2">{nextProject.category}</p>
-                        <h3 className="text-2xl font-bold">{nextProject.title}</h3>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </section>
-      )}
-    </div>
-  )
+// Generar parámetros estáticos para los proyectos válidos
+export function generateStaticParams() {
+  return validProjects.map((slug) => ({
+    slug: slug,
+  }))
 }

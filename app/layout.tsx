@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "Mariano Breiman | Product Designer",
   description:
     "Portfolio de Mariano Breiman, Product Designer especializado en crear experiencias digitales intuitivas, útiles y centradas en las personas.",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -32,7 +32,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        {/* Actualizar el proveedor de temas para asegurar una transición suave */}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
           <div className="flex min-h-screen flex-col">
             <Navigation />
             <main className="flex-1">{children}</main>
