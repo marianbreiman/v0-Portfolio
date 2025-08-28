@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { ArrowLeft, ArrowRight, Users, Search, Lightbulb, Layers, Zap, FileText } from "lucide-react"
+import { ArrowLeft, ArrowRight, Users, Search, Target, FileText } from "lucide-react"
 
 export default function FutureProjectPage() {
   return (
@@ -23,7 +23,7 @@ export default function FutureProjectPage() {
             <ScrollAnimation className="transition-all duration-500 hover:translate-y-[-5px]">
               <div className="space-y-6">
                 <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-900/50 animate-pulse">
-                  Caso de Estudio UX/UI
+                  Caso de Estudio UX/UI Design
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                   Proyecto{" "}
@@ -57,7 +57,7 @@ export default function FutureProjectPage() {
       {/* Project Overview */}
       <section className="py-16 bg-muted/50">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             <div className="space-y-2">
               <h3 className="text-sm font-medium text-muted-foreground">PROYECTO</h3>
               <p className="text-xl font-semibold">Future App</p>
@@ -70,9 +70,13 @@ export default function FutureProjectPage() {
               <h3 className="text-sm font-medium text-muted-foreground">DURACIÓN</h3>
               <p className="text-xl font-semibold">8 semanas</p>
             </div>
+            <div className="space-y-2">
+              <h3 className="text-sm font-medium text-muted-foreground">AÑO</h3>
+              <p className="text-xl font-semibold">2024</p>
+            </div>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-1">
               <h2 className="text-2xl font-bold mb-4">Sobre el proyecto</h2>
             </div>
@@ -124,7 +128,7 @@ export default function FutureProjectPage() {
             <ScrollAnimation delay={200}>
               <div className="relative h-[300px] rounded-xl overflow-hidden shadow-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center">
                 <div className="text-center p-8">
-                  <Lightbulb className="h-16 w-16 text-blue-600 mx-auto mb-4" />
+                  <Target className="h-16 w-16 text-blue-600 mx-auto mb-4" />
                   <h3 className="text-xl font-bold text-blue-800 dark:text-blue-300">Objetivo</h3>
                   <p className="mt-2 text-blue-700 dark:text-blue-400">
                     Generar una herramienta en donde elegir una carrera universitaria y en donde hacerlo no resulte en
@@ -155,6 +159,10 @@ export default function FutureProjectPage() {
               </p>
             </ScrollAnimation>
           </div>
+
+          <ScrollAnimation>
+            <h3 className="text-2xl font-bold mb-8">El MVP se basará en tres pilares:</h3>
+          </ScrollAnimation>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <ScrollAnimation>
@@ -558,9 +566,9 @@ export default function FutureProjectPage() {
             <ScrollAnimation>
               <div className="bg-card rounded-xl p-6 border shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">1</span>
+                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">🏠</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">🏠 HOME</h3>
+                <h3 className="text-xl font-bold mb-4">HOME</h3>
                 <p className="text-muted-foreground">
                   Pantalla principal de la aplicación con acceso a todas las secciones principales.
                 </p>
@@ -570,9 +578,9 @@ export default function FutureProjectPage() {
             <ScrollAnimation delay={100}>
               <div className="bg-card rounded-xl p-6 border shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">2</span>
+                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">📂</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">📂 PERFIL</h3>
+                <h3 className="text-xl font-bold mb-4">PERFIL</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li>
                     <span className="font-medium">Datos:</span> Nombre, Apellido, Mail
@@ -590,9 +598,9 @@ export default function FutureProjectPage() {
             <ScrollAnimation delay={200}>
               <div className="bg-card rounded-xl p-6 border shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">3</span>
+                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">🧠</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">🧠 TEST</h3>
+                <h3 className="text-xl font-bold mb-4">TEST</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li>
                     <span className="font-medium">Test vocacional:</span> Test de orientación vocacional, Inteligencia,
@@ -609,9 +617,9 @@ export default function FutureProjectPage() {
             <ScrollAnimation delay={300}>
               <div className="bg-card rounded-xl p-6 border shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">4</span>
+                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">🎓</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">🎓 UNIVERSIDADES</h3>
+                <h3 className="text-xl font-bold mb-4">UNIVERSIDADES</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li>Universidad pública</li>
                   <li>Universidad privada</li>
@@ -624,9 +632,9 @@ export default function FutureProjectPage() {
             <ScrollAnimation delay={400}>
               <div className="bg-card rounded-xl p-6 border shadow-sm">
                 <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mb-4">
-                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">5</span>
+                  <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">💰</span>
                 </div>
-                <h3 className="text-xl font-bold mb-4">💰 ECONOMÍA</h3>
+                <h3 className="text-xl font-bold mb-4">ECONOMÍA</h3>
                 <ul className="space-y-2 text-muted-foreground">
                   <li>
                     <span className="font-medium">Becas:</span> Repertorio de becas, Acceso directo a links de
@@ -642,69 +650,8 @@ export default function FutureProjectPage() {
         </div>
       </section>
 
-      {/* Wireframes */}
-      <section className="py-16">
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <h2 className="text-3xl font-bold mb-8">Wireframes</h2>
-            <p className="text-lg text-muted-foreground mb-10">
-              Evolución de los wireframes desde baja hasta alta fidelidad.
-            </p>
-          </ScrollAnimation>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <ScrollAnimation>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-4">Baja fidelidad</h3>
-                <div className="aspect-[9/16] relative mb-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                  {/* Placeholder for wireframe image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Layers className="h-12 w-12 text-gray-400" />
-                  </div>
-                </div>
-                <p className="text-muted-foreground">
-                  Primeros bocetos para definir la estructura básica de la aplicación y la ubicación de los elementos
-                  principales.
-                </p>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={100}>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-4">Media fidelidad</h3>
-                <div className="aspect-[9/16] relative mb-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                  {/* Placeholder for wireframe image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Layers className="h-12 w-12 text-gray-400" />
-                  </div>
-                </div>
-                <p className="text-muted-foreground">
-                  Refinamiento de la estructura con mayor detalle en los componentes y la navegación entre pantallas.
-                </p>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={200}>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-4">Alta fidelidad</h3>
-                <div className="aspect-[9/16] relative mb-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-                  {/* Placeholder for wireframe image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Layers className="h-12 w-12 text-gray-400" />
-                  </div>
-                </div>
-                <p className="text-muted-foreground">
-                  Diseño final con todos los elementos visuales, tipografía, colores y componentes de interfaz
-                  definidos.
-                </p>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
-
       {/* Pruebas de Usabilidad */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-16">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <h2 className="text-3xl font-bold mb-8">Pruebas de Usabilidad</h2>
@@ -848,7 +795,7 @@ export default function FutureProjectPage() {
       </section>
 
       {/* Evaluación Heurística */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/50">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollAnimation>
             <h2 className="text-3xl font-bold mb-8">Evaluación Heurística</h2>
@@ -963,122 +910,6 @@ export default function FutureProjectPage() {
         </div>
       </section>
 
-      {/* UI Kit */}
-      <section className="py-16 bg-muted/50">
-        <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollAnimation>
-            <h2 className="text-3xl font-bold mb-8">UI Kit</h2>
-            <p className="text-lg text-muted-foreground mb-10">
-              Elementos de diseño utilizados en la aplicación, basados en un moodboard con palabras clave: Relajación,
-              Armonía, Tranquilidad, Pacífico.
-            </p>
-          </ScrollAnimation>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <ScrollAnimation>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-6">Paleta de colores</h3>
-                <div className="grid grid-cols-4 gap-4">
-                  <div>
-                    <div className="h-16 rounded-lg bg-blue-600 mb-2"></div>
-                    <p className="text-xs text-center text-muted-foreground">#2563EB</p>
-                  </div>
-                  <div>
-                    <div className="h-16 rounded-lg bg-blue-400 mb-2"></div>
-                    <p className="text-xs text-center text-muted-foreground">#60A5FA</p>
-                  </div>
-                  <div>
-                    <div className="h-16 rounded-lg bg-teal-500 mb-2"></div>
-                    <p className="text-xs text-center text-muted-foreground">#14B8A6</p>
-                  </div>
-                  <div>
-                    <div className="h-16 rounded-lg bg-gray-800 mb-2"></div>
-                    <p className="text-xs text-center text-muted-foreground">#1F2937</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={100}>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-6">Tipografía</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-bold mb-1">Títulos</p>
-                    <p className="text-2xl">Poppins Bold</p>
-                  </div>
-                  <div>
-                    <p className="font-bold mb-1">Subtítulos</p>
-                    <p className="text-xl">Poppins SemiBold</p>
-                  </div>
-                  <div>
-                    <p className="font-bold mb-1">Cuerpo</p>
-                    <p className="text-base">Poppins Regular</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={200}>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-6">Componentes</h3>
-                <div className="space-y-4">
-                  <div>
-                    <p className="font-bold mb-2">Botones</p>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">Primario</div>
-                      <div className="bg-white border border-blue-600 text-blue-600 px-4 py-2 rounded-lg text-sm">
-                        Secundario
-                      </div>
-                      <div className="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg text-sm">Terciario</div>
-                    </div>
-                  </div>
-                  <div>
-                    <p className="font-bold mb-2">Cards</p>
-                    <div className="bg-white border rounded-lg p-3 shadow-sm">
-                      <p className="text-sm font-medium">Título de tarjeta</p>
-                      <p className="text-xs text-gray-500">Contenido de ejemplo</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={300}>
-              <div className="bg-card rounded-xl p-6 border shadow-sm">
-                <h3 className="text-xl font-bold mb-6">Iconografía</h3>
-                <div className="grid grid-cols-4 gap-4">
-                  <div className="flex flex-col items-center">
-                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                      <Users className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <p className="text-xs text-muted-foreground">Perfil</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                      <FileText className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <p className="text-xs text-muted-foreground">Test</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                      <Search className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <p className="text-xs text-muted-foreground">Buscar</p>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mb-2">
-                      <Zap className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <p className="text-xs text-muted-foreground">Acción</p>
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
-          </div>
-        </div>
-      </section>
-
       {/* Elevator Pitch */}
       <section className="py-16">
         <div className="container max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1125,12 +956,17 @@ export default function FutureProjectPage() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="group transition-transform hover:scale-105">
-                <Link href="/projects">
-                  Ver más proyectos
+                <Link href="/projects/uala">
+                  Ver proyecto Ualá
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="transition-transform hover:scale-105">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="transition-transform hover:scale-105 bg-transparent"
+              >
                 <Link href="/contact">Contacto</Link>
               </Button>
             </div>

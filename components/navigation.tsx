@@ -10,11 +10,12 @@ import { Logo } from "@/components/logo"
 import { Menu, X } from "lucide-react"
 
 const navItems = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "Skills", path: "/skills" },
-  { name: "Projects", path: "/projects" },
-  { name: "Contact", path: "/contact" },
+  { name: "Inicio", path: "/" },
+  { name: "Acerca", path: "/about" },
+  { name: "Habilidades", path: "/skills" },
+  { name: "Proyectos", path: "/projects" },
+  { name: "Conocimientos", path: "/conocimientos" },
+  { name: "Contacto", path: "/contact" },
 ]
 
 export default function Navigation() {
@@ -38,7 +39,7 @@ export default function Navigation() {
       )}
     >
       <div className="container flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-3">
           <Logo className="h-10 w-10" />
           <span className="font-heading font-bold text-lg hidden sm:inline-block">Mariano Breiman</span>
         </Link>
@@ -50,12 +51,12 @@ export default function Navigation() {
               key={item.path}
               href={item.path}
               className={cn(
-                "text-sm font-medium transition-colors hover:text-primary relative group",
+                "text-sm font-medium transition-all duration-300 hover:text-primary relative group hover:scale-105",
                 pathname === item.path ? "text-primary" : "text-muted-foreground",
               )}
             >
               {item.name}
-              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-primary transition-all duration-300 group-hover:w-full" />
+              <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
           <ModeToggle />
@@ -68,7 +69,8 @@ export default function Navigation() {
             variant="ghost"
             size="icon"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="hover:scale-110 transition-transform duration-200"
           >
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </Button>
@@ -84,7 +86,7 @@ export default function Navigation() {
                 key={item.path}
                 href={item.path}
                 className={cn(
-                  "text-lg font-medium transition-colors hover:text-primary animate-slide-in",
+                  "text-lg font-medium transition-all duration-300 hover:text-primary hover:scale-110 animate-slide-in",
                   pathname === item.path ? "text-primary" : "text-muted-foreground",
                 )}
                 style={{ animationDelay: `${index * 0.1}s` }}

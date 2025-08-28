@@ -5,6 +5,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
+import { ScrollToTop } from "@/components/scroll-to-top"
+import { PageLoader } from "@/components/page-loader"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -16,7 +18,6 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
 })
 
-// Actualizar el título y descripción con información real
 export const metadata: Metadata = {
   title: "Mariano Breiman | Product Designer",
   description:
@@ -30,10 +31,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans`}>
-        {/* Actualizar el proveedor de temas para asegurar una transición suave */}
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange={false}>
+          <ScrollToTop />
+          <PageLoader />
           <div className="flex min-h-screen flex-col">
             <Navigation />
             <main className="flex-1">{children}</main>
