@@ -20,8 +20,8 @@ export default function AboutPage() {
                   <span>Palermo, CABA, Argentina</span>
                 </div>
                 <p className="text-xl text-muted-foreground">
-                  Product Designer especializado en experiencias web y mobile responsive.
-Con experiencia en el sector turístico, empresas SaaS, educación digital y proyectos freelance.
+                  Product Designer especializado en experiencias web y mobile responsive. Con experiencia en el sector
+                  turístico, empresas SaaS, educación digital y proyectos freelance.
                 </p>
                 <div className="space-y-4">
                   <p>
@@ -40,12 +40,7 @@ Con experiencia en el sector turístico, empresas SaaS, educación digital y pro
 
             <ScrollAnimation delay={200}>
               <div className="relative h-[500px] rounded-lg overflow-hidden">
-                <Image
-                  src="/placeholder.svg?height=1000&width=800"
-                  alt="Mariano Breiman"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/mariano-casual.jpeg" alt="Mariano Breiman" fill className="object-cover object-center" />
               </div>
             </ScrollAnimation>
           </div>
@@ -241,18 +236,18 @@ Con experiencia en el sector turístico, empresas SaaS, educación digital y pro
       <section className="py-16">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <ScrollAnimation>
+            <ScrollAnimation delay={200}>
               <div className="relative h-[400px] rounded-lg overflow-hidden">
                 <Image
-                  src="/placeholder.svg?height=800&width=600"
-                  alt="Mariano's workspace"
+                  src="/mariano-casual.jpeg"
+                  alt="Espacio de trabajo de Mariano"
                   fill
-                  className="object-cover"
+                  className="object-cover object-center"
                 />
               </div>
             </ScrollAnimation>
 
-            <ScrollAnimation delay={200}>
+            <ScrollAnimation>
               <div className="space-y-6">
                 <h2 className="text-3xl font-bold">Idiomas</h2>
                 <div className="space-y-4">

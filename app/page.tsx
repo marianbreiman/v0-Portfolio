@@ -51,10 +51,10 @@ export default function Home() {
               <div className="relative">
                 <div className="relative h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/professional-workspace-with-design-tools.png"
-                    alt="Mariano Breiman en su entorno de trabajo"
+                    src="/mariano-professional.jpeg"
+                    alt="Mariano Breiman, Product Designer en Multitravel"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                     priority
                   />
                 </div>

@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { ArrowRight, Calendar, User, Clock } from "lucide-react"
+import { ArrowRight, Calendar, User, Clock, ExternalLink } from "lucide-react"
+import { SectionHeading } from "@/components/section-heading"
+import { Button } from "@/components/ui/button"
 
 const projects = [
   {
@@ -31,6 +33,49 @@ const projects = [
   },
 ]
 
+const behanceProjects = [
+  {
+    id: "125441469",
+    title: "Future",
+    subtitle: "Prototipo UX/UI",
+    description: "Aplicación para orientación vocacional estudiantil",
+    url: "https://www.behance.net/gallery/125441469/Future-Prototipo-UxUi",
+    color: "from-blue-600 to-indigo-600",
+  },
+  {
+    id: "184224897",
+    title: "Refugurus Orbit",
+    subtitle: "Landing Web App",
+    description: "Diseño para Orbit - Landing Web App",
+    url: "https://www.behance.net/gallery/184224897/Diseno-para-Orbit-Landing-Web-App",
+    color: "from-green-600 to-teal-600",
+  },
+  {
+    id: "184225635",
+    title: "Challenge Conexa",
+    subtitle: "Rediseño para Alleata",
+    description: "Challenge de diseño UX/UI para plataforma digital",
+    url: "https://www.behance.net/gallery/184225635/Rediseno-para-alleata",
+    color: "from-purple-600 to-pink-600",
+  },
+  {
+    id: "133580041",
+    title: "Case Study Ualá",
+    subtitle: "Rediseño UX/UI",
+    description: "Rediseño completo de la app de billetera digital",
+    url: "https://www.behance.net/gallery/133580041/Rediseno-UXUI-Uala",
+    color: "from-violet-600 to-purple-600",
+  },
+  {
+    id: "184223321",
+    title: "Consorcio Transportes Madrid",
+    subtitle: "Propuesta de Diseño",
+    description: "Propuesta para el Consorcio de Transportes de Madrid",
+    url: "https://www.behance.net/gallery/184223321/Propuesta-para-el-Consorcio-de-Transportes-de-Madrid",
+    color: "from-orange-600 to-red-600",
+  },
+]
+
 export default function ProjectsPage() {
   return (
     <div className="pt-24">
@@ -50,10 +95,76 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Projects Grid */}
+      {/* Behance Projects Grid */}
+      <section className="py-16 bg-muted/30">
+        <div className="container">
+          <ScrollAnimation>
+            <SectionHeading
+              title="Proyectos en Behance"
+              subtitle="Una selección de trabajos de diseño gráfico, branding y UX/UI disponibles en mi perfil de Behance."
+              centered
+            />
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {behanceProjects.map((project, index) => (
+              <ScrollAnimation key={project.id} delay={index * 100} className="group">
+                <Link href={project.url} target="_blank" rel="noopener noreferrer" className="block">
+                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-muted to-muted/50 border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+                    {/* Behance Embed */}
+                    <iframe
+                      src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
+                      className="w-full h-full"
+                      allowFullScreen
+                      loading="lazy"
+                      frameBorder="0"
+                      allow="clipboard-write"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+
+                    {/* Hover Overlay */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-90 transition-all duration-300 flex items-center justify-center p-6`}
+                    >
+                      <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 className="text-lg font-bold mb-1">{project.title}</h3>
+                        <p className="text-sm opacity-90 mb-2">{project.subtitle}</p>
+                        <p className="text-xs opacity-75 mb-4">{project.description}</p>
+                        <div className="inline-flex items-center text-sm font-medium">
+                          Ver en Behance
+                          <ExternalLink className="ml-2 h-4 w-4" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </ScrollAnimation>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Button asChild size="lg" variant="outline">
+              <Link href="https://behance.net/marianbreiman" target="_blank" rel="noopener noreferrer">
+                Ver perfil completo en Behance
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Case Studies */}
       <section className="py-16">
         <div className="container">
-          <div className="space-y-12">
+          <ScrollAnimation>
+            <SectionHeading
+              title="Casos de estudio detallados"
+              subtitle="Proyectos con proceso completo de investigación, diseño y validación."
+              centered
+            />
+          </ScrollAnimation>
+
+          <div className="space-y-12 mt-12">
             {projects.map((project, index) => (
               <ScrollAnimation key={project.id} delay={index * 200} className="group">
                 <Link href={`/projects/${project.id}`} className="block">
