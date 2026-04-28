@@ -4,7 +4,7 @@ import { Linkedin, Mail, Dribbble } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-muted/30">
+    <footer className="border-t border-border/50 bg-muted/20">
       <div className="container py-8 md:py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
@@ -17,32 +17,23 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
-            <Link
-              href="https://linkedin.com/in/mariano-breiman"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full bg-background hover:bg-primary/10 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </Link>
-            <Link
-              href="https://behance.net/marianbreiman"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 rounded-full bg-background hover:bg-primary/10 transition-colors"
-              aria-label="Behance"
-            >
-              <Dribbble className="h-5 w-5" />
-            </Link>
-            <Link
-              href="mailto:marianbreiman@gmail.com"
-              className="p-2 rounded-full bg-background hover:bg-primary/10 transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="h-5 w-5" />
-            </Link>
+          <div className="flex items-center gap-3">
+            {[
+              { href: "https://linkedin.com/in/mariano-breiman", icon: Linkedin, label: "LinkedIn" },
+              { href: "https://behance.net/marianbreiman", icon: Dribbble, label: "Behance" },
+              { href: "mailto:marianbreiman@gmail.com", icon: Mail, label: "Email" },
+            ].map(({ href, icon: Icon, label }) => (
+              <Link
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="p-2.5 rounded-xl border border-transparent hover:border-primary/20 hover:bg-primary/10 transition-all duration-300 hover:scale-110 hover:-translate-y-0.5"
+                aria-label={label}
+              >
+                <Icon className="h-4 w-4" />
+              </Link>
+            ))}
           </div>
         </div>
 

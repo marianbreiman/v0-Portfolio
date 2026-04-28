@@ -19,6 +19,11 @@ yarn-error.log*
 # env files
 .env*
 
+# local AI artifacts and logs
+.claude/
+build-log.txt
+package-lock.json
+
 # vercel
 .vercel
 

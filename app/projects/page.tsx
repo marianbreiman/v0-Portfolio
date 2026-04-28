@@ -1,37 +1,10 @@
 import Link from "next/link"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { ArrowRight, Calendar, User, Clock, ExternalLink } from "lucide-react"
+import { ArrowRight, Clock, User, Calendar, ExternalLink, ArrowUpRight } from "lucide-react"
 import { SectionHeading } from "@/components/section-heading"
 import { Button } from "@/components/ui/button"
-
-const projects = [
-  {
-    id: "future",
-    title: "Proyecto Future",
-    subtitle: "Camina hacia el futuro",
-    description:
-      "Aplicación que ayuda a estudiantes a elegir su carrera universitaria y dónde estudiarla, proporcionando información sobre carreras, universidades y becas en un solo lugar.",
-    category: "UX/UI Design • App Móvil",
-    duration: "8 semanas",
-    role: "UX Researcher & Designer",
-    year: "2024",
-    color: "blue",
-    bgGradient: "from-blue-500 to-blue-600",
-  },
-  {
-    id: "uala",
-    title: "Rediseño App Ualá",
-    subtitle: "Fintech UX Research",
-    description:
-      "Mejora de la experiencia de usuario de la app de billetera digital Ualá, enfocándome en seguridad, soporte al cliente y una interfaz más intuitiva.",
-    category: "UX Research & Design • Fintech",
-    duration: "6 semanas",
-    role: "UX Researcher & Designer",
-    year: "2023",
-    color: "purple",
-    bgGradient: "from-purple-500 to-pink-500",
-  },
-]
+import { projects } from "@/lib/projects"
+import { MetricBadge } from "@/components/metric-badge"
 
 const behanceProjects = [
   {
@@ -40,179 +13,204 @@ const behanceProjects = [
     subtitle: "Prototipo UX/UI",
     description: "Aplicación para orientación vocacional estudiantil",
     url: "https://www.behance.net/gallery/125441469/Future-Prototipo-UxUi",
-    color: "from-blue-600 to-indigo-600",
   },
   {
     id: "184224897",
-    title: "Refugurus Orbit",
+    title: "Orbit",
     subtitle: "Landing Web App",
-    description: "Diseño para Orbit - Landing Web App",
+    description: "Diseño de landing para Orbit Web App",
     url: "https://www.behance.net/gallery/184224897/Diseno-para-Orbit-Landing-Web-App",
-    color: "from-green-600 to-teal-600",
   },
   {
     id: "184225635",
-    title: "Challenge Conexa",
-    subtitle: "Rediseño para Alleata",
-    description: "Challenge de diseño UX/UI para plataforma digital",
+    title: "Alleata",
+    subtitle: "Challenge UX/UI",
+    description: "Rediseño de plataforma digital",
     url: "https://www.behance.net/gallery/184225635/Rediseno-para-alleata",
-    color: "from-purple-600 to-pink-600",
   },
   {
     id: "133580041",
-    title: "Case Study Ualá",
+    title: "Ualá",
     subtitle: "Rediseño UX/UI",
-    description: "Rediseño completo de la app de billetera digital",
+    description: "Rediseño completo de billetera digital",
     url: "https://www.behance.net/gallery/133580041/Rediseno-UXUI-Uala",
-    color: "from-violet-600 to-purple-600",
   },
   {
     id: "184223321",
-    title: "Consorcio Transportes Madrid",
+    title: "Consorcio Madrid",
     subtitle: "Propuesta de Diseño",
     description: "Propuesta para el Consorcio de Transportes de Madrid",
     url: "https://www.behance.net/gallery/184223321/Propuesta-para-el-Consorcio-de-Transportes-de-Madrid",
-    color: "from-orange-600 to-red-600",
   },
 ]
 
 export default function ProjectsPage() {
   return (
     <div className="pt-24">
-      {/* Hero Section */}
-      <section className="py-12 md:py-20">
-        <div className="container">
+
+      {/* ══════════════════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        <div
+          className="orb w-[500px] h-[500px] -right-24 top-0 opacity-50"
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.15) 0%, transparent 70%)" }}
+        />
+        <div className="container relative z-10">
           <ScrollAnimation>
-            <div className="max-w-3xl mx-auto text-center">
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            <div className="max-w-3xl space-y-5">
+              <p className="chip">Portfolio</p>
+              <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
                 Mis <span className="gradient-text">proyectos</span>
               </h1>
-              <p className="text-xl text-muted-foreground">
-                Una muestra de mi trabajo de diseño, proceso y enfoque para resolver problemas complejos.
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
+                No muestro solo pantallas finales. Muestro el razonamiento, las decisiones y
+                el proceso detrás de cada solución.
               </p>
             </div>
           </ScrollAnimation>
         </div>
       </section>
 
-      {/* Behance Projects Grid */}
-      <section className="py-16 bg-muted/30">
+      {/* ══════════════════════════════════════════════════════
+          CASOS DE ESTUDIO DETALLADOS
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-14 md:py-20">
         <div className="container">
           <ScrollAnimation>
-            <SectionHeading
-              title="Proyectos en Behance"
-              subtitle="Una selección de trabajos de diseño gráfico, branding y UX/UI disponibles en mi perfil de Behance."
-              centered
-            />
+            <div className="mb-14">
+              <p className="chip mb-3">Con proceso completo</p>
+              <SectionHeading
+                title="Casos de estudio"
+                subtitle="Investigación, decisiones de diseño y resultados medibles."
+              />
+            </div>
           </ScrollAnimation>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {behanceProjects.map((project, index) => (
-              <ScrollAnimation key={project.id} delay={index * 100} className="group">
-                <Link href={project.url} target="_blank" rel="noopener noreferrer" className="block">
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gradient-to-br from-muted to-muted/50 border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                    {/* Behance Embed */}
-                    <iframe
-                      src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
-                      className="w-full h-full"
-                      allowFullScreen
-                      loading="lazy"
-                      frameBorder="0"
-                      allow="clipboard-write"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                    />
-
-                    {/* Hover Overlay */}
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-90 transition-all duration-300 flex items-center justify-center p-6`}
-                    >
-                      <div className="text-center text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="text-lg font-bold mb-1">{project.title}</h3>
-                        <p className="text-sm opacity-90 mb-2">{project.subtitle}</p>
-                        <p className="text-xs opacity-75 mb-4">{project.description}</p>
-                        <div className="inline-flex items-center text-sm font-medium">
-                          Ver en Behance
-                          <ExternalLink className="ml-2 h-4 w-4" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </ScrollAnimation>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Button asChild size="lg" variant="outline">
-              <Link href="https://behance.net/marianbreiman" target="_blank" rel="noopener noreferrer">
-                Ver perfil completo en Behance
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Case Studies */}
-      <section className="py-16">
-        <div className="container">
-          <ScrollAnimation>
-            <SectionHeading
-              title="Casos de estudio detallados"
-              subtitle="Proyectos con proceso completo de investigación, diseño y validación."
-              centered
-            />
-          </ScrollAnimation>
-
-          <div className="space-y-12 mt-12">
+          <div className="space-y-8">
             {projects.map((project, index) => (
-              <ScrollAnimation key={project.id} delay={index * 200} className="group">
-                <Link href={`/projects/${project.id}`} className="block">
-                  <div className="grid md:grid-cols-2 gap-8 items-center bg-card rounded-2xl border p-8 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <div className={`${index % 2 === 1 ? "order-2 md:order-1" : ""} space-y-6`}>
-                      <div className="space-y-3">
-                        <div
-                          className={`inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium ${
-                            project.color === "blue"
-                              ? "bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-400 dark:border-blue-900/50"
-                              : "bg-purple-100 text-purple-700 border-purple-200 dark:bg-purple-900/30 dark:text-purple-400 dark:border-purple-900/50"
-                          }`}
-                        >
-                          {project.category}
+              <ScrollAnimation key={project.slug} delay={index * 80}>
+                <div className="project-card group">
+                  <div className="grid md:grid-cols-[1fr_280px] lg:grid-cols-[1fr_360px] gap-0">
+                    <div className="p-8 md:p-10 space-y-6 flex flex-col justify-between">
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3">
+                          <span className="chip">{project.category}</span>
+                          <span className="text-xs text-muted-foreground">{project.year}</span>
                         </div>
-                        <h3 className="text-2xl md:text-3xl font-bold">{project.title}</h3>
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center">
-                            <Clock className="h-4 w-4 mr-1" />
-                            {project.duration}
-                          </div>
-                          <div className="flex items-center">
-                            <User className="h-4 w-4 mr-1" />
-                            {project.role}
-                          </div>
-                          <div className="flex items-center">
-                            <Calendar className="h-4 w-4 mr-1" />
-                            {project.year}
-                          </div>
+                        <h3 className="text-2xl md:text-3xl font-bold tracking-tight group-hover:text-primary transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                        <div className="flex flex-wrap gap-4 text-xs text-muted-foreground">
+                          <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" />{project.duration}</span>
+                          <span className="flex items-center gap-1"><User className="h-3.5 w-3.5" />{project.role}</span>
+                          <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" />{project.year}</span>
                         </div>
+                        <p className="text-muted-foreground leading-relaxed">{project.description}</p>
                       </div>
-                      <p className="text-lg text-muted-foreground">{project.description}</p>
-                      <div className="flex items-center text-primary font-medium group-hover:underline">
-                        Ver caso de estudio completo
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <div className="space-y-5">
+                        <div className="flex flex-wrap gap-2">
+                          {project.metrics.map((metric, idx) => (
+                            <MetricBadge key={idx} metric={metric} />
+                          ))}
+                        </div>
+                        <div className="flex gap-3">
+                          <Button asChild size="sm" className="btn-primary-glow group/btn">
+                            <Link href={`/projects/${project.slug}`}>
+                              Ver caso completo
+                              <ArrowRight className="ml-1.5 h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
+                            </Link>
+                          </Button>
+                          {project.externalUrl && (
+                            <Button asChild variant="outline" size="sm" className="btn-primary-glow">
+                              <Link href={project.externalUrl} target="_blank" rel="noopener noreferrer">
+                                Behance <ArrowUpRight className="ml-1 h-3.5 w-3.5" />
+                              </Link>
+                            </Button>
+                          )}
+                        </div>
                       </div>
                     </div>
-                    <div
-                      className={`${index % 2 === 1 ? "order-1 md:order-2" : ""} relative h-[300px] rounded-xl overflow-hidden`}
-                    >
+
+                    <div className="relative min-h-[200px] md:min-h-0 overflow-hidden">
                       <div
-                        className={`absolute inset-0 bg-gradient-to-br ${project.bgGradient} flex items-center justify-center`}
-                      >
-                        <div className="text-center p-8">
-                          <h2 className="text-3xl font-bold text-white mb-4">{project.title.split(" ").pop()}</h2>
-                          <p className="text-lg text-white/90">{project.subtitle}</p>
+                        className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                        style={{ background: `linear-gradient(135deg, hsl(var(--primary)/0.15), hsl(var(--secondary)/0.12))` }}
+                      />
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                        <p className="text-xs font-bold uppercase tracking-widest text-primary/40 mb-3">{project.category}</p>
+                        <h4 className="text-2xl font-black text-primary/75 leading-tight">
+                          {project.title.split(" ").slice(0, 3).join(" ")}
+                        </h4>
+                        <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{project.context}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          BEHANCE
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-14 md:py-20 bg-muted/20">
+        <div className="container">
+          <ScrollAnimation>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+              <div className="space-y-3 max-w-xl">
+                <p className="chip">Behance</p>
+                <SectionHeading
+                  title="Proyectos en Behance"
+                  subtitle="Trabajos de diseño UX/UI, branding y experimentación visual."
+                />
+              </div>
+              <Button asChild variant="outline" className="btn-primary-glow shrink-0 self-start sm:self-auto">
+                <Link href="https://behance.net/marianbreiman" target="_blank" rel="noopener noreferrer">
+                  Ver perfil completo <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {behanceProjects.map((project, index) => (
+              <ScrollAnimation key={project.id} delay={index * 70}>
+                <Link href={project.url} target="_blank" rel="noopener noreferrer" className="block group">
+                  <div className="project-card overflow-hidden">
+                    {/* iframe embed */}
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <iframe
+                        src={`https://www.behance.net/embed/project/${project.id}?ilo0=1`}
+                        className="w-full h-full pointer-events-none"
+                        allowFullScreen
+                        loading="lazy"
+                        frameBorder="0"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        title={project.title}
+                      />
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/70 opacity-0 group-hover:opacity-95 transition-all duration-400 flex items-center justify-center p-6">
+                        <div className="text-center text-white transform translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                          <h3 className="text-lg font-bold mb-1">{project.title}</h3>
+                          <p className="text-sm opacity-85 mb-1">{project.subtitle}</p>
+                          <p className="text-xs opacity-70 mb-5">{project.description}</p>
+                          <span className="inline-flex items-center text-sm font-semibold gap-1.5">
+                            Ver en Behance <ExternalLink className="h-3.5 w-3.5" />
+                          </span>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Card footer */}
+                    <div className="px-5 py-4 flex items-center justify-between">
+                      <div>
+                        <p className="font-semibold text-sm">{project.title}</p>
+                        <p className="text-xs text-muted-foreground">{project.subtitle}</p>
+                      </div>
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
                   </div>
                 </Link>
@@ -221,6 +219,7 @@ export default function ProjectsPage() {
           </div>
         </div>
       </section>
+
     </div>
   )
 }
