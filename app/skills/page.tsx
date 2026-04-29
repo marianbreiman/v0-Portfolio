@@ -1,43 +1,78 @@
 import { SectionHeading } from "@/components/section-heading"
 import { ScrollAnimation } from "@/components/scroll-animation"
+import { SkillDonuts } from "@/components/skill-donuts"
+import { PageHero } from "@/components/page-hero"
 import {
-  Figma, Layout, Search, GitBranch, Rocket, Users, Brain, GitCompare,
-  Monitor, Smartphone, Layers, PenTool, BarChart2, MessageSquare
+  Monitor, Layout, Zap, Eye, Layers, PenTool,
+  Brain, BarChart2, Rocket, Search, GitMerge, FileText,
 } from "lucide-react"
 
+// ─── Diseño & UX ──────────────────────────────────────────────────────────────
 const DESIGN_SKILLS = [
-  { icon: Figma,      name: "Figma",           desc: "Diseño de interfaces, sistemas y prototipos" },
-  { icon: Layout,     name: "Design Systems",  desc: "Componentes reutilizables y tokens de diseño" },
-  { icon: PenTool,    name: "Diseño Visual",   desc: "Tipografía, color, composición y jerarquía" },
-  { icon: Smartphone, name: "Mobile-first",    desc: "Diseño responsivo y adaptado a contexto" },
-  { icon: Monitor,    name: "Web Design",      desc: "Interfaces web con foco en conversión y UX" },
-  { icon: Layers,     name: "Wireframing",     desc: "Flujos, arquitectura de información y bocetos" },
+  {
+    icon: Monitor,
+    name: "Responsive & Adaptive Design",
+    desc: "Diseño experiencias consistentes entre desktop y mobile contemplando contexto, jerarquía y comportamiento de uso. No solo ajusto layouts: pienso qué importa en cada pantalla.",
+  },
+  {
+    icon: Layout,
+    name: "Design Systems & Atomic Design",
+    desc: "Estructuro interfaces escalables y consistentes conectando componentes, patrones visuales y documentación. Diseño para la eficiencia del equipo, no solo del momento.",
+  },
+  {
+    icon: Zap,
+    name: "Microinteractions & Motion Design",
+    desc: "Uso animación e interacción como soporte de feedback, claridad y experiencia. El movimiento tiene una función, no es adorno.",
+  },
+  {
+    icon: Eye,
+    name: "Accessibility & Usability",
+    desc: "Priorizo claridad, legibilidad y facilidad de uso para reducir fricción. Diseño para personas reales en contextos reales, incluyendo limitaciones.",
+  },
+  {
+    icon: Layers,
+    name: "Interactive Mockups & Prototyping",
+    desc: "Prototipo flujos y comportamientos para validar mejor y comunicar decisiones antes de implementación. Un prototipo es un argumento, no una pantalla bonita.",
+  },
+  {
+    icon: PenTool,
+    name: "Visual Design",
+    desc: "Trabajo color, tipografía, espaciado, ritmo visual y jerarquía para construir interfaces más claras y atractivas. El criterio estético está al servicio del uso.",
+  },
 ]
 
+// ─── Proceso & Estrategia ─────────────────────────────────────────────────────
 const PROCESS_SKILLS = [
-  { icon: Search,      name: "UX Research",        desc: "Entrevistas, tests de usabilidad y análisis" },
-  { icon: Brain,       name: "Design Thinking",    desc: "Empatizar, definir, idear, prototipar, testear" },
-  { icon: GitBranch,   name: "Doble Diamante",     desc: "Convergencia y divergencia en cada etapa" },
-  { icon: Rocket,      name: "Lean UX",            desc: "Hipótesis, MVPs e iteración continua" },
-  { icon: Users,       name: "Pruebas de usuario", desc: "Validación con personas reales en contexto real" },
-  { icon: GitCompare,  name: "A/B Testing",        desc: "Comparación basada en métricas claras" },
-]
-
-const SOFT_SKILLS = [
-  { icon: MessageSquare, name: "Comunicación",       desc: "Presento y defiendo decisiones con claridad" },
-  { icon: Users,         name: "Trabajo en equipo",  desc: "Colaboro con desarrollo, producto y negocio" },
-  { icon: BarChart2,     name: "Visión de producto", desc: "Conecto el diseño con los objetivos del negocio" },
-]
-
-const TOOLS = [
-  { name: "Figma",           level: 95 },
-  { name: "FigJam",          level: 88 },
-  { name: "Notion",          level: 85 },
-  { name: "Maze / Lookback", level: 78 },
-  { name: "Hotjar / GA",     level: 75 },
-  { name: "HTML + CSS",      level: 72 },
-  { name: "JavaScript",      level: 60 },
-  { name: "Git",             level: 58 },
+  {
+    icon: Brain,
+    name: "Design Thinking & HCD",
+    desc: "Parto de necesidades reales para entender contexto, fricciones y oportunidades antes de diseñar. El problema bien definido es la mitad de la solución.",
+  },
+  {
+    icon: BarChart2,
+    name: "Data-Driven Design",
+    desc: "Uso datos, métricas, señales de comportamiento e hipótesis medibles para tomar mejores decisiones. El diseño se valida con evidencia, no con opiniones.",
+  },
+  {
+    icon: Rocket,
+    name: "Lean UX, Agile & Scrum",
+    desc: "Trabajo de forma iterativa y colaborativa priorizando valor continuo. Valido sin sobrediseñar, itero rápido y ajusto con aprendizajes reales.",
+  },
+  {
+    icon: Search,
+    name: "A/B Testing, Benchmarking & Research",
+    desc: "Combino investigación cualitativa, análisis comparativo y pruebas cuantitativas para reducir incertidumbre y construir sobre evidencia.",
+  },
+  {
+    icon: GitMerge,
+    name: "Developer Handoff & Communication",
+    desc: "Acompaño la implementación, alineo con desarrollo y cuido que la experiencia diseñada llegue correctamente a producto. El handoff no es el final del diseño.",
+  },
+  {
+    icon: FileText,
+    name: "Documentation & Specifications",
+    desc: "Documento comportamientos, estados, reglas y decisiones para que diseño, producto y desarrollo trabajen con claridad. Un diseño sin specs es un diseño incompleto.",
+  },
 ]
 
 export default function SkillsPage() {
@@ -47,25 +82,30 @@ export default function SkillsPage() {
       {/* ══════════════════════════════════════════════════════
           HERO
       ══════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div
-          className="orb w-[500px] h-[500px] -left-32 top-0 opacity-50"
-          style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.12) 0%, transparent 70%)" }}
-        />
+      <PageHero
+        eyebrow="Capacidades"
+        titleBefore="Mis"
+        titleGradient="habilidades"
+        description="Herramientas, disciplinas y formas de trabajar que aplico en cada proyecto, con el nivel de dominio real en cada una."
+        orbSide="left"
+      />
 
-        <div className="container relative z-10">
+      {/* ══════════════════════════════════════════════════════
+          STACK — donuts animados + habilidades blandas + idiomas
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-14 md:py-20 bg-muted/20">
+        <div className="container">
           <ScrollAnimation>
-            <div className="max-w-3xl space-y-5">
-              <p className="chip">Capacidades</p>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                Mis <span className="gradient-text">habilidades</span>
-              </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-xl">
-                Un resumen estructurado de lo que domino: herramientas, disciplinas y formas de
-                trabajar que aplico en cada proyecto.
-              </p>
+            <div className="mb-12">
+              <p className="chip mb-3">Stack</p>
+              <SectionHeading
+                title="Herramientas & nivel de dominio"
+                subtitle="Lo que uso día a día, organizado por área, con el nivel de experiencia real en cada herramienta."
+              />
             </div>
           </ScrollAnimation>
+
+          <SkillDonuts />
         </div>
       </section>
 
@@ -87,45 +127,12 @@ export default function SkillsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {DESIGN_SKILLS.map((skill, index) => (
               <ScrollAnimation key={index} delay={index * 60}>
-                <div className="project-card p-6 h-full group cursor-default flex gap-4 items-start">
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110">
-                    <skill.icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm mb-1">{skill.name}</h3>
-                    <p className="text-xs text-muted-foreground leading-relaxed">{skill.desc}</p>
-                  </div>
-                </div>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
-          PROCESO & METODOLOGÍA
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-14 md:py-20 bg-muted/20">
-        <div className="container">
-          <ScrollAnimation>
-            <div className="mb-12">
-              <p className="chip mb-3">Proceso</p>
-              <SectionHeading
-                title="Metodologías de diseño"
-                subtitle="Adapto el método al problema, no al revés. Cada proyecto necesita una forma distinta de abordarse."
-              />
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PROCESS_SKILLS.map((skill, index) => (
-              <ScrollAnimation key={index} delay={index * 60}>
                 <div className="project-card p-6 h-full group cursor-default">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary transition-all duration-500 group-hover:bg-primary/20">
-                      <skill.icon className="h-4 w-4" />
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110">
+                      <skill.icon className="h-5 w-5" />
                     </div>
-                    <h3 className="font-bold text-sm">{skill.name}</h3>
+                    <h3 className="font-bold text-sm leading-snug">{skill.name}</h3>
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">{skill.desc}</p>
                 </div>
@@ -136,88 +143,34 @@ export default function SkillsPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          HERRAMIENTAS + SOFT SKILLS
+          PROCESO & ESTRATEGIA
       ══════════════════════════════════════════════════════ */}
-      <section className="py-14 md:py-20">
+      <section className="py-14 md:py-20 bg-muted/20">
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-16 items-start">
-            <ScrollAnimation>
-              <div>
-                <p className="chip mb-3">Stack</p>
-                <SectionHeading
-                  title="Herramientas"
-                  subtitle="Lo que uso día a día y el nivel de dominio en cada una."
-                />
+          <ScrollAnimation>
+            <div className="mb-12">
+              <p className="chip mb-3">Proceso</p>
+              <SectionHeading
+                title="Proceso & Estrategia"
+                subtitle="Adapto el método al problema, no al revés. Cada proyecto necesita una forma distinta de abordarse."
+              />
+            </div>
+          </ScrollAnimation>
 
-                <div className="space-y-5 mt-8">
-                  {TOOLS.map((tool, index) => (
-                    <ScrollAnimation key={index} delay={index * 50}>
-                      <div>
-                        <div className="flex justify-between text-sm mb-2">
-                          <span className="font-medium">{tool.name}</span>
-                          <span className="text-muted-foreground text-xs">{tool.level}%</span>
-                        </div>
-                        <div className="skill-bar animate-complete">
-                          <div
-                            className="skill-bar-fill animate-complete"
-                            style={{ transform: `scaleX(${tool.level / 100})` }}
-                          />
-                        </div>
-                      </div>
-                    </ScrollAnimation>
-                  ))}
-                </div>
-              </div>
-            </ScrollAnimation>
-
-            <ScrollAnimation delay={150}>
-              <div className="space-y-8">
-                <div>
-                  <p className="chip mb-3">Transversales</p>
-                  <SectionHeading
-                    title="Habilidades blandas"
-                    subtitle="Lo que hace que el buen diseño llegue al producto."
-                  />
-
-                  <div className="space-y-4 mt-6">
-                    {SOFT_SKILLS.map((skill, index) => (
-                      <div key={index} className="project-card p-5 flex gap-4 items-start group cursor-default">
-                        <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 transition-all duration-300 group-hover:bg-primary/20">
-                          <skill.icon className="h-4 w-4" />
-                        </div>
-                        <div>
-                          <h3 className="font-bold text-sm mb-0.5">{skill.name}</h3>
-                          <p className="text-xs text-muted-foreground">{skill.desc}</p>
-                        </div>
-                      </div>
-                    ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {PROCESS_SKILLS.map((skill, index) => (
+              <ScrollAnimation key={index} delay={index * 60}>
+                <div className="project-card p-6 h-full group cursor-default">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0 transition-all duration-500 group-hover:bg-primary/20">
+                      <skill.icon className="h-4 w-4" />
+                    </div>
+                    <h3 className="font-bold text-sm leading-snug">{skill.name}</h3>
                   </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{skill.desc}</p>
                 </div>
-
-                <div className="project-card p-6">
-                  <h3 className="font-bold mb-5 text-sm">Idiomas</h3>
-                  <div className="space-y-4">
-                    {[
-                      { lang: "Español", level: "Nativo",        pct: 100 },
-                      { lang: "Inglés",  level: "Conversacional", pct: 75 },
-                    ].map((l) => (
-                      <div key={l.lang}>
-                        <div className="flex justify-between text-xs mb-1.5">
-                          <span className="font-medium">{l.lang}</span>
-                          <span className="text-muted-foreground">{l.level}</span>
-                        </div>
-                        <div className="skill-bar">
-                          <div
-                            className="skill-bar-fill animate-complete"
-                            style={{ transform: `scaleX(${l.pct / 100})` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
+              </ScrollAnimation>
+            ))}
           </div>
         </div>
       </section>

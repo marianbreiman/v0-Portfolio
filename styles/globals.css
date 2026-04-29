@@ -6,6 +6,16 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .skill-bar-fill {
+    transform: scaleX(0);
+    transform-origin: left;
+    will-change: transform;
+  }
+
+  .animate-complete .skill-bar-fill {
+    transform: scaleX(1);
+  }
 }
 
 @layer base {

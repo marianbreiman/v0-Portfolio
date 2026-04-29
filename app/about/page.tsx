@@ -1,10 +1,13 @@
 import Image from "next/image"
 import { SectionHeading } from "@/components/section-heading"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { Heart, RefreshCw, Lightbulb, Zap, Palette, Calendar, ArrowRight } from "lucide-react"
+import { RunningCarousel } from "@/components/running-carousel"
+import { Heart, RefreshCw, Lightbulb, Zap, Palette, Calendar, ArrowRight, Footprints } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
 
+// ─── Valores ──────────────────────────────────────────────────────────────────
 const VALUES = [
   {
     icon: Heart,
@@ -33,6 +36,7 @@ const VALUES = [
   },
 ]
 
+// ─── Experiencia ──────────────────────────────────────────────────────────────
 const EXPERIENCE = [
   {
     period: "Ene. 2023 – Presente",
@@ -64,6 +68,78 @@ const EXPERIENCE = [
   },
 ]
 
+// ─── Educación — 7 items individuales ────────────────────────────────────────
+// Para editar: modificá los objetos del array EDUCATION.
+const EDUCATION = [
+  {
+    period: "Mar. 2017 – Jun. 2024",
+    institution: "Universidad de Palermo",
+    degree: "Diseñador Industrial",
+    type: "Carrera",
+  },
+  {
+    period: "2023",
+    institution: "Coderhouse",
+    degree: "Web Development Certificate",
+    type: "Certificación",
+  },
+  {
+    period: "2023",
+    institution: "Coderhouse",
+    degree: "JavaScript Certificate",
+    type: "Certificación",
+  },
+  {
+    period: "2022",
+    institution: "Coderhouse",
+    degree: "UX/UI Design Advance Certificate",
+    type: "Certificación",
+  },
+  {
+    period: "2022",
+    institution: "Coderhouse",
+    degree: "UX Research Certificate",
+    type: "Certificación",
+  },
+  {
+    period: "2021",
+    institution: "Coderhouse",
+    degree: "UX/UI Design Certificate",
+    type: "Certificación",
+  },
+  {
+    period: "Mar. 2012 – Dic. 2016",
+    institution: "Instituto ORT",
+    degree: "Bachiller Técnico en Diseño Industrial",
+    type: "Formación técnica",
+  },
+]
+
+// ─── Stats runner ─────────────────────────────────────────────────────────────
+const RUNNER_STATS = [
+  { value: "21K",        label: "Media Maratón" },
+  { value: "Constancia", label: "Cada semana en movimiento" },
+  { value: "Comunidad",  label: "Grupo de running" },
+]
+
+function TypeBadge({ type }: { type: string }) {
+  const styles: Record<string, string> = {
+    "Carrera":          "bg-primary/10 text-primary border-primary/20",
+    "Certificación":    "bg-secondary/20 text-foreground/80 border-secondary/30",
+    "Formación técnica":"bg-muted text-muted-foreground border-border",
+  }
+  return (
+    <span
+      className={cn(
+        "text-[10px] font-semibold px-2 py-0.5 rounded-full border",
+        styles[type] ?? "bg-muted text-muted-foreground border-border",
+      )}
+    >
+      {type}
+    </span>
+  )
+}
+
 export default function AboutPage() {
   return (
     <div className="pt-24">
@@ -72,7 +148,6 @@ export default function AboutPage() {
           HERO
       ══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24 relative overflow-hidden">
-        {/* Ambient bg */}
         <div
           className="orb w-[500px] h-[500px] -right-24 -top-24 opacity-60"
           style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.15) 0%, transparent 70%)" }}
@@ -170,116 +245,143 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          EXPERIENCIA
+          EXPERIENCIA + EDUCACIÓN — grid 50/50
       ══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <ScrollAnimation>
-            <div className="mb-14">
-              <p className="chip mb-3">Trayectoria</p>
-              <SectionHeading
-                title="Experiencia laboral"
-                subtitle="Proyectos reales, equipos reales, problemas reales."
-              />
-            </div>
-          </ScrollAnimation>
+          <div className="grid md:grid-cols-2 gap-12 xl:gap-16 items-start">
 
-          <div className="relative max-w-3xl pl-6">
-            <div className="timeline-line" />
+            {/* ── Experiencia ── */}
+            <div>
+              <ScrollAnimation>
+                <div className="mb-10">
+                  <p className="chip mb-3">Trayectoria</p>
+                  <SectionHeading
+                    title="Experiencia laboral"
+                    subtitle="Proyectos reales, equipos reales, problemas reales."
+                  />
+                </div>
+              </ScrollAnimation>
 
-            <div className="space-y-12">
-              {EXPERIENCE.map((item, index) => (
-                <ScrollAnimation key={index} delay={index * 80}>
-                  <div className="relative timeline-item pl-6">
-                    <div className="timeline-dot" />
-                    <div className="project-card p-6 group">
-                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-3">
-                        <div>
-                          <h3 className="text-lg font-bold">{item.role}</h3>
-                          <p className="text-primary font-medium text-sm">{item.company}</p>
-                        </div>
-                        <div className="flex items-center gap-1.5 text-xs text-muted-foreground shrink-0">
-                          <Calendar className="h-3.5 w-3.5" />
-                          {item.period}
+              <div className="relative pl-6">
+                <div className="timeline-line" />
+                <div className="space-y-8">
+                  {EXPERIENCE.map((item, index) => (
+                    <ScrollAnimation key={index} delay={index * 80}>
+                      <div className="relative timeline-item pl-6">
+                        <div className="timeline-dot" />
+                        <div className="project-card p-5 group">
+                          <div className="flex flex-col gap-1 mb-3">
+                            <h3 className="text-base font-bold">{item.role}</h3>
+                            <p className="text-primary font-medium text-sm">{item.company}</p>
+                            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                              <Calendar className="h-3 w-3" />
+                              {item.period}
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground leading-relaxed">{item.description}</p>
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                    </div>
-                  </div>
-                </ScrollAnimation>
-              ))}
+                    </ScrollAnimation>
+                  ))}
+                </div>
+              </div>
             </div>
+
+            {/* ── Educación ── */}
+            <div>
+              <ScrollAnimation>
+                <div className="mb-10">
+                  <p className="chip mb-3">Formación</p>
+                  <SectionHeading
+                    title="Educación"
+                    subtitle="Fundamentos académicos y especialización continua."
+                  />
+                </div>
+              </ScrollAnimation>
+
+              <div className="relative pl-6">
+                <div className="timeline-line" />
+                <div className="space-y-5">
+                  {EDUCATION.map((item, index) => (
+                    <ScrollAnimation key={index} delay={index * 55}>
+                      <div className="relative timeline-item pl-6">
+                        <div className="timeline-dot" />
+                        <div className="project-card p-4 group">
+                          <div className="flex items-start justify-between gap-2 mb-1">
+                            <div className="flex-1 min-w-0">
+                              <p className="text-xs font-bold leading-snug">{item.degree}</p>
+                              <p className="text-primary text-xs font-medium mt-0.5">{item.institution}</p>
+                            </div>
+                            <TypeBadge type={item.type} />
+                          </div>
+                          <div className="flex items-center gap-1 text-[11px] text-muted-foreground mt-1.5">
+                            <Calendar className="h-2.5 w-2.5" />
+                            {item.period}
+                          </div>
+                        </div>
+                      </div>
+                    </ScrollAnimation>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          EDUCACIÓN
+          RUNNER — sección personal final
       ══════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 bg-muted/20">
-        <div className="container">
-          <ScrollAnimation>
-            <div className="mb-14">
-              <p className="chip mb-3">Formación</p>
-              <SectionHeading title="Educación" subtitle="Fundamentos académicos y especialización continua." />
-            </div>
-          </ScrollAnimation>
+      <section className="py-16 md:py-24 bg-muted/20 relative overflow-hidden">
+        <div
+          className="orb w-[500px] h-[500px] -left-24 top-0 opacity-50"
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.10) 0%, transparent 70%)" }}
+        />
+        <div
+          className="orb orb-secondary w-[400px] h-[400px] -right-20 bottom-0 opacity-40"
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.12) 0%, transparent 70%)" }}
+        />
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl">
-            <ScrollAnimation>
-              <div className="space-y-5">
-                {[
-                  { institution: "Universidad de Palermo", detail: "Diseñador Industrial · Mar. 2017 – Jun. 2024" },
-                  { institution: "Instituto ORT", detail: "Bachiller Técnico en Diseño Industrial · Mar. 2012 – Dic. 2016" },
-                ].map((edu, i) => (
-                  <div key={i} className="project-card p-6">
-                    <h3 className="font-bold mb-1">{edu.institution}</h3>
-                    <p className="text-sm text-muted-foreground">{edu.detail}</p>
+        <div className="container relative z-10">
+          {/* Header: texto + stats */}
+          <ScrollAnimation>
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-14">
+              <div className="space-y-6">
+                <div>
+                  <p className="chip mb-4 inline-flex gap-2">
+                    <Footprints className="h-3.5 w-3.5" />
+                    Fuera del diseño
+                  </p>
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                    También soy <span className="gradient-text">runner</span>
+                  </h2>
+                </div>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  El running se volvió una parte muy importante de mi vida. Me conecta con la
+                  disciplina, el esfuerzo sostenido y la superación personal. Y también con una
+                  comunidad de amigos y experiencias que me impulsan a seguir creciendo, dentro
+                  y fuera del diseño.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-6">
+                {RUNNER_STATS.map((stat) => (
+                  <div key={stat.label} className="project-card px-6 py-5 flex-1 min-w-[140px] text-center">
+                    <p className="text-2xl font-black gradient-text mb-1">{stat.value}</p>
+                    <p className="text-xs text-muted-foreground leading-snug">{stat.label}</p>
                   </div>
                 ))}
               </div>
-            </ScrollAnimation>
+            </div>
+          </ScrollAnimation>
 
-            <ScrollAnimation delay={150}>
-              <div className="project-card p-6 h-full">
-                <h3 className="font-bold mb-5">Certificaciones Coderhouse</h3>
-                <ul className="space-y-3.5">
-                  {[
-                    "UX/UI Design Certificate (2021)",
-                    "UX Research Certificate (2022)",
-                    "UX/UI Design Advance Certificate (2022)",
-                    "JavaScript Certificate (2023)",
-                    "Web Development Certificate (2023)",
-                  ].map((cert, i) => (
-                    <li key={i} className="flex items-center gap-3 text-sm">
-                      <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                      {cert}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 pt-5 border-t border-border/50">
-                  <h4 className="font-semibold mb-3 text-sm">Idiomas</h4>
-                  <div className="space-y-3">
-                    {[
-                      { lang: "Español", level: "Nativo", pct: 100 },
-                      { lang: "Inglés", level: "Conversacional", pct: 75 },
-                    ].map((l) => (
-                      <div key={l.lang}>
-                        <div className="flex justify-between text-xs mb-1.5">
-                          <span className="font-medium">{l.lang}</span>
-                          <span className="text-muted-foreground">{l.level}</span>
-                        </div>
-                        <div className="skill-bar">
-                          <div className="skill-bar-fill animate-complete" style={{ transform: `scaleX(${l.pct / 100})` }} />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </ScrollAnimation>
-          </div>
+          {/* Carrusel */}
+          <ScrollAnimation delay={100}>
+            <RunningCarousel />
+          </ScrollAnimation>
         </div>
       </section>
 

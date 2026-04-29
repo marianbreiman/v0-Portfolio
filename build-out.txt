@@ -1,0 +1,45 @@
+
+> my-v0-project@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.15
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - The class `ease-[cubic-bezier(0.16,1,0.3,1)]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `ease-&lsqb;cubic-bezier(0.16,1,0.3,1)&rsqb;` to silence this warning.
+ ✓ Compiled successfully in 2.5s
+   Skipping validation of types
+   Linting ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                    11.5 kB         130 kB
+├ ○ /_not-found                            995 B         103 kB
+├ ○ /about                               2.71 kB         121 kB
+├ ○ /contact                             5.62 kB         118 kB
+├ ○ /projects                              581 B         113 kB
+├ ● /projects/[slug]                       161 B         106 kB
+├   ├ /projects/future-prototype
+├   ├ /projects/uala-redesign
+├   ├ /projects/orbit-landing
+├   └ [+2 more paths]
+├ ○ /projects/future                       581 B         113 kB
+├ ○ /projects/uala                         581 B         113 kB
+└ ○ /skills                                561 B         110 kB
++ First Load JS shared by all             102 kB
+  ├ chunks/255-4f212684648fcab9.js         46 kB
+  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+  └ other shared chunks (total)          1.99 kB
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

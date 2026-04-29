@@ -985,7 +985,7 @@ export default function UalaProjectPage() {
                 size="lg"
                 className="transition-transform hover:scale-105 bg-transparent"
               >
-                <Link href="/projects/future">Ver proyecto Future</Link>
+                <Link href="/projects/future-prototype">Ver proyecto Future</Link>
               </Button>
             </div>
           </ScrollAnimation>
