@@ -22,7 +22,7 @@ yarn-error.log*
 # local AI artifacts and logs
 .claude/
 build-log.txt
-package-lock.json
+# package-lock.json tracked intentionally for Vercel npm detection
 
 # vercel
 .vercel
