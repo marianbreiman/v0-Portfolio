@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container py-8 md:py-12">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col items-center md:items-start gap-2">
-            <Link href="/" className="flex flex-col items-center gap-4">
+            <Link href="/" className="flex items-center gap-2">
               <Logo className="h-8 w-8" />
               <span className="font-heading font-bold">Mariano Breiman</span>
             </Link>

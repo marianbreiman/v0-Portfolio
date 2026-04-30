@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react"
 import Image from "next/image"
-import { ChevronLeft, ChevronRight, ArrowUpRight, Footprints, Instagram } from "lucide-react"
+import { ChevronLeft, ChevronRight, ArrowUpRight, Instagram, Play, ImageIcon, BookOpen } from "lucide-react"
 import { runningItems, type RunningItem } from "@/lib/running-data"
 import { cn } from "@/lib/utils"
 
@@ -13,12 +13,19 @@ const TYPE_LABELS: Record<RunningItem["type"], string> = {
   recap: "Recap",
 }
 
-// Gradient per type for placeholder background
-const TYPE_GRADIENTS: Record<RunningItem["type"], string> = {
-  reel:  "from-primary/20 via-secondary/10 to-primary/5",
-  post:  "from-secondary/20 via-primary/8 to-secondary/5",
-  story: "from-primary/15 via-secondary/15 to-transparent",
-  recap: "from-secondary/25 via-primary/12 to-secondary/8",
+// Gradientes cálidos estilo Instagram por tipo
+const TYPE_GRADIENTS: Record<RunningItem["type"], [string, string, string]> = {
+  reel:  ["#f09433", "#e6683c", "#dc2743"],
+  post:  ["#833ab4", "#c13584", "#e1306c"],
+  story: ["#405de6", "#833ab4", "#f09433"],
+  recap: ["#12c2e9", "#c471ed", "#f64f59"],
+}
+
+const TYPE_ICONS: Record<RunningItem["type"], React.ElementType> = {
+  reel:  Play,
+  post:  ImageIcon,
+  story: Instagram,
+  recap: BookOpen,
 }
 
 const AUTOPLAY_MS = 4500
@@ -155,7 +162,7 @@ function CarouselCard({ item }: { item: RunningItem }) {
     >
       <div className="rounded-2xl border border-border bg-card overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-primary/25">
 
-        {/* Visual area — aspect-[4/5] like Instagram portrait */}
+        {/* Visual area */}
         <div className="relative aspect-[4/5] overflow-hidden">
           {item.thumbnail ? (
             <Image
@@ -169,28 +176,10 @@ function CarouselCard({ item }: { item: RunningItem }) {
           )}
 
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/85 to-secondary/75 opacity-0 group-hover:opacity-95 transition-all duration-350 flex flex-col items-center justify-center gap-3 p-6">
-            <Footprints className="h-7 w-7 text-white/80" />
-            <p className="text-white text-sm text-center leading-relaxed font-medium">
-              {item.description}
-            </p>
-            <span className="inline-flex items-center gap-1.5 text-white/90 text-xs font-semibold mt-1 border border-white/30 rounded-full px-3 py-1.5 bg-white/10">
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/35 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
+            <span className="inline-flex items-center gap-1.5 text-white text-xs font-semibold border border-white/40 rounded-full px-4 py-2 bg-white/15 backdrop-blur-sm">
               Ver en Instagram <ArrowUpRight className="h-3.5 w-3.5" />
             </span>
-          </div>
-
-          {/* Type badge */}
-          <div className="absolute top-3 left-3">
-            <span className="inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide bg-background/85 backdrop-blur-sm text-foreground border border-border/60">
-              {TYPE_LABELS[item.type]}
-            </span>
-          </div>
-
-          {/* Instagram icon top-right */}
-          <div className="absolute top-3 right-3 opacity-70 group-hover:opacity-0 transition-opacity duration-200">
-            <div className="w-7 h-7 rounded-full bg-background/85 backdrop-blur-sm flex items-center justify-center border border-border/60">
-              <Instagram className="h-3.5 w-3.5 text-foreground" />
-            </div>
           </div>
         </div>
 
@@ -208,36 +197,51 @@ function CarouselCard({ item }: { item: RunningItem }) {
 }
 
 function InstagramPlaceholder({ item }: { item: RunningItem }) {
-  const gradient = TYPE_GRADIENTS[item.type]
+  const [c1, c2, c3] = TYPE_GRADIENTS[item.type]
+  const TypeIcon = TYPE_ICONS[item.type]
+
   return (
-    <div className={cn("absolute inset-0 flex flex-col items-center justify-center gap-5 px-6 bg-gradient-to-br", gradient)}>
-      {/* Icon */}
-      <div className="relative shrink-0">
-        <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/15 flex items-center justify-center">
-          <Footprints className="h-7 w-7 text-primary/55" />
+    <div
+      className="absolute inset-0 flex flex-col justify-between p-5"
+      style={{
+        background: `linear-gradient(160deg, ${c1} 0%, ${c2} 50%, ${c3} 100%)`,
+      }}
+    >
+      {/* Top: perfil + tipo */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-7 h-7 rounded-full bg-white/25 backdrop-blur-sm flex items-center justify-center border border-white/30">
+            <Instagram className="h-3.5 w-3.5 text-white" />
+          </div>
+          <span className="text-white/95 text-xs font-semibold drop-shadow-sm">@marianbreiman</span>
         </div>
-        <div className="absolute -inset-1.5 rounded-3xl border border-primary/10 animate-pulse" />
+        <span className="text-[10px] font-bold text-white/80 uppercase tracking-wider">
+          {TYPE_LABELS[item.type]}
+        </span>
       </div>
 
-      {/* Content */}
-      <div className="text-center space-y-2">
-        <p className="text-xs font-bold text-foreground/50 uppercase tracking-[0.14em]">
-          {TYPE_LABELS[item.type]}
-        </p>
-        <p className="text-sm font-bold text-foreground/70 leading-snug line-clamp-2">
+      {/* Centro: ícono del tipo */}
+      <div className="flex items-center justify-center">
+        <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30">
+          {item.type === "reel" ? (
+            /* Triángulo play */
+            <div className="w-0 h-0 border-y-[9px] border-y-transparent border-l-[16px] border-l-white ml-1" />
+          ) : (
+            <TypeIcon className="h-6 w-6 text-white" />
+          )}
+        </div>
+      </div>
+
+      {/* Bottom: título + descripción */}
+      <div className="space-y-1.5">
+        <p className="text-white font-bold text-sm leading-snug line-clamp-2 drop-shadow-sm">
           {item.title}
         </p>
         {item.description && (
-          <p className="text-[11px] text-muted-foreground leading-relaxed line-clamp-3">
+          <p className="text-white/75 text-[11px] leading-relaxed line-clamp-2">
             {item.description}
           </p>
         )}
-      </div>
-
-      {/* Instagram handle */}
-      <div className="flex items-center gap-1.5">
-        <Instagram className="h-3 w-3 text-primary/45" />
-        <span className="text-[10px] text-muted-foreground font-medium">@marianbreiman</span>
       </div>
     </div>
   )

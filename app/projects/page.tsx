@@ -13,56 +13,36 @@ const behanceProjects = [
     id: "125441469",
     title: "Future",
     subtitle: "Prototipo UX/UI",
-    description: "Orientación vocacional estudiantil — research, IA y diseño de experiencia.",
     url: "https://www.behance.net/gallery/125441469/Future-Prototipo-UxUi",
     embedUrl: "https://www.behance.net/embed/project/125441469?ilo0=1",
-    gradientA: "hsl(var(--primary)/0.22)",
-    gradientB: "hsl(var(--secondary)/0.15)",
-    angle: "135deg",
   },
   {
     id: "184224897",
     title: "Orbit",
     subtitle: "Landing Web App",
-    description: "Diseño de landing con enfoque en conversión y mobile-first.",
     url: "https://www.behance.net/gallery/184224897/Diseno-para-Orbit-Landing-Web-App",
     embedUrl: "https://www.behance.net/embed/project/184224897?ilo0=1",
-    gradientA: "hsl(var(--secondary)/0.20)",
-    gradientB: "hsl(var(--primary)/0.12)",
-    angle: "160deg",
   },
   {
     id: "184225635",
     title: "Alleata",
     subtitle: "Challenge UX/UI",
-    description: "Rediseño completo de plataforma digital para mejorar usabilidad y conversión.",
     url: "https://www.behance.net/gallery/184225635/Rediseno-para-alleata",
     embedUrl: "https://www.behance.net/embed/project/184225635?ilo0=1",
-    gradientA: "hsl(var(--primary)/0.18)",
-    gradientB: "hsl(var(--secondary)/0.22)",
-    angle: "120deg",
   },
   {
     id: "133580041",
     title: "Ualá",
     subtitle: "Rediseño UX/UI",
-    description: "Rediseño de billetera digital con foco en flujos de pago y confianza.",
     url: "https://www.behance.net/gallery/133580041/Rediseno-UXUI-Uala",
     embedUrl: "https://www.behance.net/embed/project/133580041?ilo0=1",
-    gradientA: "hsl(var(--secondary)/0.18)",
-    gradientB: "hsl(var(--primary)/0.18)",
-    angle: "145deg",
   },
   {
     id: "184223321",
     title: "Consorcio Madrid",
     subtitle: "Propuesta de Diseño",
-    description: "Propuesta para el sistema de transporte público de Madrid.",
     url: "https://www.behance.net/gallery/184223321/Propuesta-para-el-Consorcio-de-Transportes-de-Madrid",
     embedUrl: "https://www.behance.net/embed/project/184223321?ilo0=1",
-    gradientA: "hsl(var(--primary)/0.15)",
-    gradientB: "hsl(var(--secondary)/0.25)",
-    angle: "110deg",
   },
 ]
 
@@ -80,6 +60,84 @@ export default function ProjectsPage() {
         description="No muestro solo pantallas finales. Muestro el razonamiento, las decisiones y el proceso detrás de cada solución."
         orbSide="right"
       />
+
+      {/* ══════════════════════════════════════════════════════
+          BEHANCE — iframes (caratula nativa de Behance)
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-14 md:py-20 bg-muted/20">
+        <div className="container">
+          <ScrollAnimation>
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+              <div className="space-y-3 max-w-xl">
+                <p className="chip">Behance</p>
+                <SectionHeading
+                  title="Proyectos en Behance"
+                  subtitle="Trabajos de diseño UX/UI, branding y experimentación visual."
+                />
+              </div>
+              <Button asChild variant="outline" className="btn-primary-glow shrink-0 self-start sm:self-auto">
+                <Link href="https://behance.net/marianbreiman" target="_blank" rel="noopener noreferrer">
+                  Ver perfil <ArrowUpRight className="ml-1.5 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </ScrollAnimation>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {behanceProjects.map((project, index) => (
+              <ScrollAnimation key={project.id} delay={index * 70}>
+                <div className="group relative rounded-2xl overflow-hidden border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5 hover:border-primary/25">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
+                    {/* iframe visual — sin pointer events para evitar scroll interno */}
+                    <iframe
+                      src={project.embedUrl}
+                      title={project.title}
+                      className="absolute inset-0 w-full h-full border-0 pointer-events-none select-none"
+                      loading="lazy"
+                      tabIndex={-1}
+                      allowFullScreen
+                      allow="clipboard-write"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                    />
+
+                    {/* Capa interactiva que cubre toda la card */}
+                    <Link
+                      href={project.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="absolute inset-0 z-10 flex flex-col justify-end"
+                      aria-label={`Ver ${project.title} en Behance`}
+                    >
+                      {/* Overlay gradiente: siempre en mobile, hover en desktop */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent transition-opacity duration-400 opacity-100 md:opacity-0 md:group-hover:opacity-100" />
+
+                      {/* Contenido desktop (sube en hover) */}
+                      <div className="relative hidden md:flex flex-col gap-2.5 p-5 transition-all duration-300 translate-y-3 opacity-0 group-hover:translate-y-0 group-hover:opacity-100">
+                        <p className="text-white font-bold text-base leading-tight drop-shadow-sm">
+                          {project.title}
+                        </p>
+                        <span className="self-start inline-flex items-center gap-1.5 text-xs font-semibold text-white bg-white/18 backdrop-blur-sm border border-white/28 rounded-full px-3.5 py-1.5">
+                          Ver en Behance <ExternalLink className="h-3 w-3" />
+                        </span>
+                      </div>
+
+                      {/* Contenido mobile (siempre visible) */}
+                      <div className="relative flex md:hidden items-center justify-between gap-2 px-4 py-3">
+                        <p className="text-white font-bold text-sm leading-tight truncate drop-shadow-sm">
+                          {project.title}
+                        </p>
+                        <span className="shrink-0 inline-flex items-center gap-1 text-[11px] font-semibold text-white/90">
+                          Behance <ExternalLink className="h-3 w-3" />
+                        </span>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              </ScrollAnimation>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ══════════════════════════════════════════════════════
           CASOS DE ESTUDIO

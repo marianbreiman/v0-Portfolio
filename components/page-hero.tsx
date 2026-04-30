@@ -18,29 +18,35 @@ export function PageHero({
   description,
   orbSide = "right",
 }: PageHeroProps) {
-  const orbBase = "orb w-[560px] h-[560px] opacity-55"
-  const orbSecondary = "orb orb-secondary w-[440px] h-[440px] opacity-40"
+  const orbBase      = "orb w-[640px] h-[640px] opacity-70"
+  const orbSecondary = "orb orb-secondary w-[520px] h-[520px] opacity-55"
+  const orbTertiary  = "orb w-[300px] h-[300px] opacity-35"
 
-  const primaryPos  = orbSide === "right" ? "-right-24 -top-16" : "-left-32 -top-8"
+  const primaryPos  = orbSide === "right" ? "-right-20 -top-12" : "-left-28 -top-8"
   const primaryBg   = orbSide === "right"
-    ? "radial-gradient(circle, hsl(var(--secondary)/0.18) 0%, transparent 70%)"
-    : "radial-gradient(circle, hsl(var(--primary)/0.14) 0%, transparent 70%)"
+    ? "radial-gradient(circle, hsl(var(--secondary)/0.24) 0%, transparent 70%)"
+    : "radial-gradient(circle, hsl(var(--primary)/0.20) 0%, transparent 70%)"
 
   const secondaryPos = orbSide === "right" ? "-left-20 bottom-0" : "-right-16 bottom-0"
   const secondaryBg  = orbSide === "right"
-    ? "radial-gradient(circle, hsl(var(--primary)/0.12) 0%, transparent 70%)"
-    : "radial-gradient(circle, hsl(var(--secondary)/0.18) 0%, transparent 70%)"
+    ? "radial-gradient(circle, hsl(var(--primary)/0.18) 0%, transparent 70%)"
+    : "radial-gradient(circle, hsl(var(--secondary)/0.24) 0%, transparent 70%)"
+
+  const tertiaryPos = orbSide === "right" ? "left-[35%] -top-20" : "right-[30%] -top-16"
+  const tertiaryBg  = "radial-gradient(circle, hsl(var(--primary)/0.12) 0%, transparent 70%)"
 
   return (
-    <section className="py-16 md:py-28 relative overflow-hidden">
+    <section className="py-16 md:py-28 relative overflow-hidden hero-animated-bg">
       {/* Primary orb */}
       <div className={`${orbBase} ${primaryPos}`} style={{ background: primaryBg }} />
       {/* Secondary orb */}
       <div className={`${orbSecondary} ${secondaryPos}`} style={{ background: secondaryBg }} />
+      {/* Tertiary accent orb */}
+      <div className={`${orbTertiary} ${tertiaryPos}`} style={{ background: tertiaryBg }} />
 
       {/* Dot grid */}
       <div
-        className="absolute inset-0 opacity-[0.045] pointer-events-none"
+        className="absolute inset-0 opacity-[0.055] pointer-events-none"
         style={{
           backgroundImage: "radial-gradient(circle, hsl(var(--primary)) 1px, transparent 1px)",
           backgroundSize: "28px 28px",
@@ -48,16 +54,22 @@ export function PageHero({
       />
 
       {/* Floating accents */}
+      <div className="floating-animation absolute top-16 right-[22%] w-5 h-5 rounded-full bg-secondary/35 blur-sm pointer-events-none" />
       <div
-        className="floating-animation absolute top-20 right-[20%] w-5 h-5 rounded-full bg-secondary/30 blur-sm pointer-events-none"
-      />
-      <div
-        className="floating-animation absolute bottom-20 left-[14%] w-7 h-7 rounded-full bg-primary/20 blur-md pointer-events-none"
+        className="floating-animation absolute bottom-20 left-[14%] w-7 h-7 rounded-full bg-primary/25 blur-md pointer-events-none"
         style={{ animationDelay: "-2.5s" }}
       />
       <div
-        className="floating-animation absolute top-1/2 left-[7%] w-3 h-3 rounded-full bg-primary/30 blur-sm pointer-events-none"
+        className="floating-animation absolute top-1/2 left-[7%] w-3 h-3 rounded-full bg-primary/35 blur-sm pointer-events-none"
         style={{ animationDelay: "-4.2s" }}
+      />
+      <div
+        className="floating-animation absolute top-1/3 right-[8%] w-4 h-4 rounded-full bg-secondary/30 blur-sm pointer-events-none"
+        style={{ animationDelay: "-1.8s" }}
+      />
+      <div
+        className="floating-animation absolute bottom-1/3 right-[28%] w-2.5 h-2.5 rounded-full bg-primary/25 blur-sm pointer-events-none"
+        style={{ animationDelay: "-6s" }}
       />
 
       <div className="container relative z-10">

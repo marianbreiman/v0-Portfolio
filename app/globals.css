@@ -133,7 +133,7 @@
   }
   .project-card::after {
     content: "";
-    @apply absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500;
+    @apply absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500 pointer-events-none;
     background: linear-gradient(135deg, hsl(var(--primary) / 0.06), hsl(var(--secondary) / 0.06));
   }
   .project-card:hover {
@@ -278,6 +278,26 @@
   33%  { transform: translate(30px, -20px) scale(1.05); }
   66%  { transform: translate(-20px, 15px) scale(0.97); }
   100% { transform: translate(10px, -30px) scale(1.03); }
+}
+
+/* ─── Hero background animation ─── */
+@keyframes hero-bg-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-animated-bg {
+  background: linear-gradient(
+    -45deg,
+    hsl(var(--background)) 0%,
+    hsl(var(--primary) / 0.035) 25%,
+    hsl(var(--secondary) / 0.028) 50%,
+    hsl(var(--primary) / 0.02) 75%,
+    hsl(var(--background)) 100%
+  );
+  background-size: 400% 400%;
+  animation: hero-bg-drift 28s ease infinite;
 }
 
 @keyframes fade-in {

@@ -80,18 +80,18 @@ export function AnimatedGradientBackground() {
             grad.addColorStop(1,   "rgba(100, 140, 220, 0)")
           }
         } else {
-          // Light mode — vibrant, luminous glows on near-white background
+          // Light mode — tonos suaves, elegantes, no saturados
           if (i === 0) {
-            grad.addColorStop(0,   "rgba(79, 108, 246, 0.26)")
-            grad.addColorStop(0.4, "rgba(79, 108, 246, 0.10)")
+            grad.addColorStop(0,   "rgba(79, 108, 246, 0.11)")
+            grad.addColorStop(0.4, "rgba(79, 108, 246, 0.04)")
             grad.addColorStop(1,   "rgba(79, 108, 246, 0)")
           } else if (i === 1) {
-            grad.addColorStop(0,   "rgba(236, 72, 153, 0.22)")
-            grad.addColorStop(0.5, "rgba(236, 72, 153, 0.07)")
+            grad.addColorStop(0,   "rgba(236, 72, 153, 0.09)")
+            grad.addColorStop(0.5, "rgba(236, 72, 153, 0.03)")
             grad.addColorStop(1,   "rgba(236, 72, 153, 0)")
           } else {
-            grad.addColorStop(0,   "rgba(109, 40, 217, 0.20)")
-            grad.addColorStop(0.6, "rgba(109, 40, 217, 0.06)")
+            grad.addColorStop(0,   "rgba(109, 40, 217, 0.08)")
+            grad.addColorStop(0.6, "rgba(109, 40, 217, 0.02)")
             grad.addColorStop(1,   "rgba(109, 40, 217, 0)")
           }
         }

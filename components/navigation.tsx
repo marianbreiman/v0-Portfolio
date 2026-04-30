@@ -45,11 +45,11 @@ export default function Navigation() {
         {/* Logo */}
         <Link
           href="/"
-          className="flex items-center gap-3 group"
+          className="flex flex-row items-center gap-4 group"
           aria-label="Inicio"
         >
-          <Logo className="h-9 w-9 transition-transform duration-300 group-hover:scale-110" />
-          <span className="font-heading font-bold text-base hidden sm:inline-block transition-colors duration-300 group-hover:text-primary">
+          <Logo className="h-9 w-9 transition-transform duration-300 group-hover:scale-110 shrink-0" />
+          <span className="font-heading font-bold text-base transition-colors duration-300 group-hover:text-primary leading-tight">
             Mariano Breiman
           </span>
         </Link>
