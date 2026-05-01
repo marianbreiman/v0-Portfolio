@@ -1,10 +1,9 @@
 import { Resend } from "resend"
 import { NextResponse } from "next/server"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "marianbreiman@gmail.com"
-
 export async function POST(req: Request) {
+  const apiKey = process.env.RESEND_API_KEY
+  const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "marianbreiman@gmail.com"
   let body: { name?: string; email?: string; subject?: string; message?: string }
 
   try {
@@ -23,13 +22,15 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Email no válido." }, { status: 400 })
   }
 
-  if (!process.env.RESEND_API_KEY) {
+  if (!apiKey) {
     console.error("RESEND_API_KEY no configurado")
     return NextResponse.json(
       { error: "Servicio de email no configurado. Por favor escribime directo a marianbreiman@gmail.com." },
       { status: 503 },
     )
   }
+
+  const resend = new Resend(apiKey)
 
   try {
     const { error } = await resend.emails.send({
