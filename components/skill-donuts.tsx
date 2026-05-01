@@ -40,6 +40,7 @@ function DonutRing({
   desc,
   animated,
   delay,
+  logoUrl,
 }: {
   pct: number
   name: string
@@ -47,6 +48,7 @@ function DonutRing({
   desc?: string
   animated: boolean
   delay: number
+  logoUrl?: string
 }) {
   const uid      = name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
   const fill     = animated ? CIRC * (1 - pct / 100) : CIRC
@@ -141,11 +143,28 @@ function DonutRing({
           />
         </svg>
 
-        {/* Percentage overlay */}
+        {/* Center: brand logo (default) → pct on hover */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-[11px] font-bold tabular-nums text-foreground leading-none">
-            {pct}%
-          </span>
+          {logoUrl ? (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={logoUrl}
+                alt={name}
+                width={22}
+                height={22}
+                className="logo-icon object-contain transition-opacity duration-200 group-hover:opacity-0"
+                onError={(e) => { e.currentTarget.style.display = "none" }}
+              />
+              <span className="absolute text-[11px] font-bold tabular-nums text-foreground leading-none opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                {pct}%
+              </span>
+            </>
+          ) : (
+            <span className="text-[11px] font-bold tabular-nums text-foreground leading-none">
+              {pct}%
+            </span>
+          )}
         </div>
       </div>
 
@@ -221,6 +240,7 @@ export function SkillDonuts() {
                     desc={tool.desc}
                     animated={animated}
                     delay={tool.delay}
+                    logoUrl={tool.logoUrl}
                   />
                 ))}
               </div>

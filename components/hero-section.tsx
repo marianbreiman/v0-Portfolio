@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, MapPin } from "lucide-react"
+import { HeroDotBackground } from "@/components/hero-dot-background"
 
 // ─── Hero entrance animation ─────────────────────────────────────
 function useHeroEntrance() {
@@ -93,6 +94,9 @@ export function HeroSection({ stats = [] }: HeroSectionProps) {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-44 md:pb-32 overflow-hidden min-h-[92vh] flex items-center bg-white dark:bg-background">
+      {/* Dot background: grid + wave + mouse spotlight */}
+      <HeroDotBackground />
+
       {/* Animated background canvas */}
       <canvas
         ref={canvasRef}

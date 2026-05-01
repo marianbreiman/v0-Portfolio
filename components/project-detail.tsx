@@ -314,7 +314,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           </Button>
         ) : null}
         <Button asChild size="lg">
-          <Link href="/CV.pdf" target="_blank" rel="noopener noreferrer">
+          <Link href="/cv-mariano-breiman-ats.pdf" target="_blank" rel="noopener noreferrer" download>
             Descargar CV
           </Link>
         </Button>

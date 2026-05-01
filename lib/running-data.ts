@@ -4,61 +4,59 @@ export interface RunningItem {
   id: string
   title: string
   type: RunningItemType
-  // Ruta relativa a /public (ej: "/running/media-maraton.jpg"), o null para mostrar placeholder
   thumbnail: string | null
-  // URL directa al post o reel específico en Instagram (ej: "https://www.instagram.com/p/ABC123/")
-  // Si apuntas al perfil general se abrirá el perfil, no el post específico
+  embedUrl: string | null
   instagramUrl: string
   description?: string
 }
 
-// ─── Cómo agregar tus propios posts ──────────────────────────────────────────
-// 1. Guardá la imagen en /public/running/ (ej: /public/running/media-maraton.jpg)
-// 2. Cambiá thumbnail: null → thumbnail: "/running/media-maraton.jpg"
-// 3. Cambiá instagramUrl por la URL directa al post específico:
-//    - Posts/reels: "https://www.instagram.com/p/[SHORTCODE]/"
-//    - Historias: "https://www.instagram.com/stories/marianbreiman/"
-// ─────────────────────────────────────────────────────────────────────────────
-
 export const runningItems: RunningItem[] = [
   {
     id: "1",
-    title: "Media Maratón Buenos Aires",
-    type: "recap",
+    title: "Post de running",
+    type: "post",
     thumbnail: null,
-    instagramUrl: "https://www.instagram.com/marianbreiman/",
-    description: "Cruzar la meta siempre es especial. Una de las mejores sensaciones.",
+    embedUrl: "https://www.instagram.com/p/DS74OkVEawQ/embed/",
+    instagramUrl: "https://www.instagram.com/p/DS74OkVEawQ/",
   },
   {
     id: "2",
-    title: "Entrenamiento semanal",
-    type: "reel",
+    title: "Post de running",
+    type: "post",
     thumbnail: null,
-    instagramUrl: "https://www.instagram.com/marianbreiman/",
-    description: "Fondo largo de domingo. La constancia construye la resistencia.",
+    embedUrl: "https://www.instagram.com/p/DXhHRtdkbeW/embed/",
+    instagramUrl: "https://www.instagram.com/p/DXhHRtdkbeW/",
   },
   {
     id: "3",
-    title: "Grupo de running",
-    type: "post",
+    title: "Reel de running",
+    type: "reel",
     thumbnail: null,
-    instagramUrl: "https://www.instagram.com/marianbreiman/",
-    description: "La comunidad hace toda la diferencia. Mejores con otros.",
+    embedUrl: "https://www.instagram.com/reel/DWNHjEmjoMI/embed/",
+    instagramUrl: "https://www.instagram.com/reel/DWNHjEmjoMI/",
   },
   {
     id: "4",
-    title: "Carrera nocturna",
-    type: "post",
+    title: "Reel de running",
+    type: "reel",
     thumbnail: null,
-    instagramUrl: "https://www.instagram.com/marianbreiman/",
-    description: "Correr de noche tiene otra energía. Una experiencia increíble.",
+    embedUrl: "https://www.instagram.com/reel/DTvDePukXfj/embed/",
+    instagramUrl: "https://www.instagram.com/reel/DTvDePukXfj/",
   },
   {
     id: "5",
-    title: "Logros 2024",
-    type: "recap",
+    title: "Reel de running",
+    type: "reel",
     thumbnail: null,
-    instagramUrl: "https://www.instagram.com/marianbreiman/",
-    description: "Balance del año: más kilómetros, más aprendizajes, más comunidad.",
+    embedUrl: "https://www.instagram.com/reel/DSXsETwkTol/embed/",
+    instagramUrl: "https://www.instagram.com/reel/DSXsETwkTol/",
+  },
+  {
+    id: "6",
+    title: "Post de running",
+    type: "post",
+    thumbnail: null,
+    embedUrl: "https://www.instagram.com/p/DVWdoElEREa/embed/",
+    instagramUrl: "https://www.instagram.com/p/DVWdoElEREa/",
   },
 ]

@@ -401,17 +401,12 @@
   box-shadow: 0 0 0 4px hsl(var(--primary) / 0.15);
 }
 
-/* ─── Cursor glow (optional interactive) ─── */
-.cursor-glow {
-  pointer-events: none;
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  background: radial-gradient(circle, hsl(var(--primary) / 0.06) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
-  z-index: 0;
+/* ─── Brand logo dark mode ─── */
+.logo-icon {
+  filter: none;
+}
+.dark .logo-icon {
+  filter: brightness(0) invert(1);
 }
 
 /* ─── Reduced motion ─── */

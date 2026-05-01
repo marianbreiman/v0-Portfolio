@@ -164,7 +164,17 @@ function CarouselCard({ item }: { item: RunningItem }) {
 
         {/* Visual area */}
         <div className="relative aspect-[4/5] overflow-hidden">
-          {item.thumbnail ? (
+          {item.embedUrl ? (
+            <iframe
+              src={item.embedUrl}
+              title={item.title}
+              className="absolute inset-0 w-full h-full border-0 pointer-events-none select-none"
+              loading="lazy"
+              tabIndex={-1}
+              scrolling="no"
+              allowFullScreen
+            />
+          ) : item.thumbnail ? (
             <Image
               src={item.thumbnail}
               alt={item.title}

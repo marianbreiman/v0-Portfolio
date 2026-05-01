@@ -194,6 +194,78 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
+          ESTE PORTFOLIO — built by me
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-20 md:py-32 relative overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 70% 50% at 100% 50%, hsl(var(--primary)/0.05), transparent)" }}
+        />
+        <div className="container relative z-10">
+          <ScrollAnimation>
+            <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+
+              {/* Copy */}
+              <div className="space-y-6">
+                <span className="chip inline-flex items-center gap-1.5">⚡ Vibe coded</span>
+
+                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">
+                  Este portfolio también es{" "}
+                  <span className="gradient-text">parte del proyecto</span>
+                </h2>
+
+                <div
+                  className="h-0.5 w-12 rounded-full"
+                  style={{ background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))" }}
+                />
+
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Lo diseñé, desarrollé e iteré como una muestra real de mi forma de trabajar: combinando criterio de diseño, pensamiento de producto y herramientas de IA para construir más rápido, pero con intención.
+                </p>
+
+                <p className="text-base text-muted-foreground/80 leading-relaxed">
+                  Desde la arquitectura de componentes hasta las animaciones, los casos de estudio y el deploy, este sitio fue pensado, iterado y publicado por mí. Herramientas como Claude, Cursor y Figma Make fueron parte del proceso — no como sustitutos del criterio, sino como extensión para explorar, documentar y construir mejor.
+                </p>
+
+                <p className="text-sm italic text-muted-foreground/60">
+                  Este sitio es evidencia viva de lo que sé hacer.
+                </p>
+              </div>
+
+              {/* Tools grid */}
+              <div className="space-y-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Stack utilizado</p>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { name: "Next.js",      note: "Framework" },
+                    { name: "TypeScript",   note: "Tipado" },
+                    { name: "Tailwind CSS", note: "Estilos" },
+                    { name: "Figma",        note: "Diseño" },
+                    { name: "Claude",       note: "IA · docs" },
+                    { name: "ChatGPT",      note: "IA · research" },
+                    { name: "Cursor",       note: "IA · código" },
+                    { name: "Figma Make",   note: "IA · UI" },
+                    { name: "Vercel",       note: "Deploy" },
+                  ].map(({ name, note }) => (
+                    <div
+                      key={name}
+                      className="group project-card p-3.5 text-center cursor-default transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-sm"
+                    >
+                      <p className="text-xs font-bold text-foreground/80 group-hover:text-primary transition-colors duration-300 leading-snug">
+                        {name}
+                      </p>
+                      <p className="text-[10px] text-muted-foreground mt-0.5">{note}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </ScrollAnimation>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
           CTA FINAL
       ══════════════════════════════════════════════════════ */}
       <section className="py-24 md:py-36 relative overflow-hidden">

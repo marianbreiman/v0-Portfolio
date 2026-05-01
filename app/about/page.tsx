@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { HeroDotBackground } from "@/components/hero-dot-background"
 import { SectionHeading } from "@/components/section-heading"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { RunningCarousel } from "@/components/running-carousel"
@@ -147,30 +148,47 @@ export default function AboutPage() {
       {/* ══════════════════════════════════════════════════════
           HERO
       ══════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 relative overflow-hidden">
+      <section className="pt-20 pb-16 md:pt-32 md:pb-24 relative overflow-hidden hero-animated-bg">
         <div
-          className="orb w-[500px] h-[500px] -right-24 -top-24 opacity-60"
-          style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.15) 0%, transparent 70%)" }}
+          className="orb w-[700px] h-[700px] -right-28 -top-20 opacity-70"
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.26) 0%, transparent 70%)" }}
         />
+        <div
+          className="orb orb-secondary w-[560px] h-[560px] -left-24 bottom-0 opacity-55"
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.20) 0%, transparent 70%)" }}
+        />
+        <HeroDotBackground />
 
         <div className="container relative z-10">
           <div className="grid md:grid-cols-2 gap-14 items-center">
-            <ScrollAnimation>
-              <div className="space-y-7">
-                <div>
-                  <p className="chip mb-4">Sobre mí</p>
-                  <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
-                    Sobre <span className="gradient-text">Mariano</span>
-                  </h1>
-                </div>
+            <div className="space-y-7">
+              <div style={{ animation: "badge-pop 0.55s var(--ease-out-expo) 0.05s both" }}>
+                <p className="chip">Sobre mí</p>
+              </div>
 
+              <h1
+                className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
+                style={{ animation: "hero-word-in 0.9s var(--ease-out-expo) 0.18s both" }}
+              >
+                Sobre <span className="gradient-text">Mariano</span>
+              </h1>
+
+              <div
+                className="h-0.5 w-16 rounded-full"
+                style={{
+                  background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))",
+                  animation: "line-grow 0.8s var(--ease-out-expo) 0.45s both",
+                  transformOrigin: "left center",
+                }}
+              />
+
+              <div style={{ animation: "slide-in 0.7s ease-out 0.5s both" }} className="space-y-5">
                 <p className="text-xl leading-relaxed text-foreground/80">
                   Product Designer especializado en experiencias web y mobile. Trabajo donde se cruzan
                   la investigación, la estrategia y el diseño visual para construir productos que
                   tienen sentido.
                 </p>
-
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-3 text-muted-foreground leading-relaxed">
                   <p>
                     Me formé en Diseño Industrial (Universidad de Palermo) y me especialicé en UX/UI
                     a través de la práctica real. He trabajado en el sector turístico, plataformas SaaS,
@@ -181,7 +199,6 @@ export default function AboutPage() {
                     No diseño pantallas: diseño experiencias que resuelven algo concreto para alguien concreto.
                   </p>
                 </div>
-
                 <Button asChild className="btn-primary-glow group">
                   <Link href="/projects">
                     Ver mi trabajo
@@ -189,28 +206,32 @@ export default function AboutPage() {
                   </Link>
                 </Button>
               </div>
-            </ScrollAnimation>
+            </div>
 
-            <ScrollAnimation delay={200}>
-              <div className="relative">
-                <div
-                  className="absolute -inset-3 rounded-3xl blur-2xl opacity-25"
-                  style={{ background: "linear-gradient(135deg, hsl(var(--primary)/0.5), hsl(var(--secondary)/0.4))" }}
+            <div
+              className="relative"
+              style={{ animation: "slide-in 1s cubic-bezier(0.34,1.56,0.64,1) 0.3s both" }}
+            >
+              <div
+                className="absolute -inset-3 rounded-3xl blur-2xl opacity-25"
+                style={{ background: "linear-gradient(135deg, hsl(var(--primary)/0.5), hsl(var(--secondary)/0.4))" }}
+              />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl gradient-border aspect-[4/5]">
+                <Image
+                  src="/mariano-casual.jpeg"
+                  alt="Mariano Breiman"
+                  fill
+                  className="object-cover object-center"
                 />
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl gradient-border aspect-[4/5]">
-                  <Image
-                    src="/mariano-casual.jpeg"
-                    alt="Mariano Breiman"
-                    fill
-                    className="object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
-                </div>
-                <div className="floating-animation absolute -bottom-5 -right-5 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
               </div>
-            </ScrollAnimation>
+              <div className="floating-animation absolute -bottom-5 -right-5 w-24 h-24 bg-primary/20 rounded-full blur-2xl" />
+              <div className="floating-animation absolute -top-4 -left-4 w-16 h-16 bg-secondary/25 rounded-full blur-xl" style={{ animationDelay: "-3s" }} />
+            </div>
           </div>
         </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background to-transparent pointer-events-none" />
       </section>
 
       {/* ══════════════════════════════════════════════════════
@@ -384,6 +405,7 @@ export default function AboutPage() {
           </ScrollAnimation>
         </div>
       </section>
+
 
     </div>
   )
