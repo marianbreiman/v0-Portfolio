@@ -14,6 +14,19 @@ import { MetricBadge } from "@/components/metric-badge"
 import { BRANDS } from "@/lib/brands-data"
 import { TESTIMONIALS } from "@/lib/testimonials-data"
 
+const VIBE_TOOLS = [
+  { name: "Claude",       note: "IA · docs" },
+  { name: "ChatGPT",      note: "IA · research" },
+  { name: "Cursor",       note: "IA · código" },
+  { name: "Figma Make",   note: "IA · UI" },
+  { name: "Next.js",      note: "Framework" },
+  { name: "TypeScript",   note: "Tipado" },
+  { name: "Tailwind CSS", note: "Estilos" },
+  { name: "Figma",        note: "Diseño" },
+  { name: "Vercel",       note: "Deploy" },
+  { name: "Codex",        note: "IA · código" },
+]
+
 // ─── Stats counter ─────────────────────────────────────────────────────────────
 const STATS = [
   { value: "4+", label: "Años de experiencia" },
@@ -194,74 +207,71 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          ESTE PORTFOLIO — built by me
+          EVOLUCIÓN — vibe coded manifesto
       ══════════════════════════════════════════════════════ */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 50% at 100% 50%, hsl(var(--primary)/0.05), transparent)" }}
-        />
-        <div className="container relative z-10">
+      <section className="py-24 md:py-36 overflow-hidden">
+        <div className="container">
           <ScrollAnimation>
-            <div className="grid lg:grid-cols-2 gap-12 xl:gap-20 items-center">
+            {/* Heading */}
+            <div className="max-w-3xl mb-14">
+              <span className="chip inline-flex items-center gap-1.5 mb-6">⚡ Vibe coded</span>
+              <h2 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.95] mb-6">
+                La evolución<br />
+                <span className="gradient-text">no para.</span>
+              </h2>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
+                Diseño, producto e implementación: tres disciplinas que combino con criterio propio
+                y las herramientas más actuales. Este portfolio es evidencia viva de esa práctica.
+              </p>
+            </div>
 
-              {/* Copy */}
-              <div className="space-y-6">
-                <span className="chip inline-flex items-center gap-1.5">⚡ Vibe coded</span>
-
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.12]">
-                  Este portfolio también es{" "}
-                  <span className="gradient-text">parte del proyecto</span>
-                </h2>
-
-                <div
-                  className="h-0.5 w-12 rounded-full"
-                  style={{ background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))" }}
-                />
-
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  Lo diseñé, desarrollé e iteré como una muestra real de mi forma de trabajar: combinando criterio de diseño, pensamiento de producto y herramientas de IA para construir más rápido, pero con intención.
-                </p>
-
-                <p className="text-base text-muted-foreground/80 leading-relaxed">
-                  Desde la arquitectura de componentes hasta las animaciones, los casos de estudio y el deploy, este sitio fue pensado, iterado y publicado por mí. Herramientas como Claude, Cursor y Figma Make fueron parte del proceso — no como sustitutos del criterio, sino como extensión para explorar, documentar y construir mejor.
-                </p>
-
-                <p className="text-sm italic text-muted-foreground/60">
-                  Este sitio es evidencia viva de lo que sé hacer.
-                </p>
-              </div>
-
-              {/* Tools grid */}
-              <div className="space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Stack utilizado</p>
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { name: "Next.js",      note: "Framework" },
-                    { name: "TypeScript",   note: "Tipado" },
-                    { name: "Tailwind CSS", note: "Estilos" },
-                    { name: "Figma",        note: "Diseño" },
-                    { name: "Claude",       note: "IA · docs" },
-                    { name: "ChatGPT",      note: "IA · research" },
-                    { name: "Cursor",       note: "IA · código" },
-                    { name: "Figma Make",   note: "IA · UI" },
-                    { name: "Vercel",       note: "Deploy" },
-                  ].map(({ name, note }) => (
-                    <div
-                      key={name}
-                      className="group project-card p-3.5 text-center cursor-default transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-sm"
-                    >
-                      <p className="text-xs font-bold text-foreground/80 group-hover:text-primary transition-colors duration-300 leading-snug">
-                        {name}
-                      </p>
-                      <p className="text-[10px] text-muted-foreground mt-0.5">{note}</p>
-                    </div>
-                  ))}
+            {/* Tres pilares */}
+            <div className="grid sm:grid-cols-3 gap-4 mb-0">
+              {[
+                {
+                  num: "01",
+                  title: "Criterio de diseño",
+                  body: "No genero pantallas al azar. Investigo, decido y ejecuto con intención clara.",
+                },
+                {
+                  num: "02",
+                  title: "Producto real",
+                  body: "Pienso en negocio, métricas y viabilidad técnica desde el primer trazo.",
+                },
+                {
+                  num: "03",
+                  title: "IA como extensión",
+                  body: "Uso Claude, Cursor y Figma Make para llegar más lejos, sin ceder el criterio.",
+                },
+              ].map(({ num, title, body }) => (
+                <div key={num} className="project-card p-6 group cursor-default">
+                  <span className="text-3xl font-black text-primary/12 group-hover:text-primary/22 transition-colors block mb-4 leading-none">
+                    {num}
+                  </span>
+                  <h3 className="font-bold text-sm mb-2">{title}</h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{body}</p>
                 </div>
-              </div>
-
+              ))}
             </div>
           </ScrollAnimation>
+        </div>
+
+        {/* Marquee strip */}
+        <div className="mt-12 border-y border-border/60 py-4 overflow-hidden">
+          <div
+            className="marquee-track flex gap-3 w-max"
+            style={{ animation: "marquee 30s linear infinite" }}
+          >
+            {[...VIBE_TOOLS, ...VIBE_TOOLS].map(({ name, note }, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-border bg-card shrink-0"
+              >
+                <span className="text-xs font-bold text-foreground/75">{name}</span>
+                <span className="text-[10px] text-muted-foreground border-l border-border pl-2.5">{note}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

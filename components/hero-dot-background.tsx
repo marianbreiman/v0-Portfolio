@@ -20,10 +20,10 @@ const DARK_BASE_A     = 0.18
 const DARK_WAVE_PEAK  = 0.70
 const DARK_MOUSE_PEAK = 0.52
 
-const LIGHT_RGB        = [55, 85, 170] as const    // muted navy
-const LIGHT_BASE_A     = 0.11
-const LIGHT_WAVE_PEAK  = 0.33
-const LIGHT_MOUSE_PEAK = 0.23
+const LIGHT_RGB        = [40, 70, 160] as const    // navy más saturado
+const LIGHT_BASE_A     = 0.22
+const LIGHT_WAVE_PEAK  = 0.58
+const LIGHT_MOUSE_PEAK = 0.42
 
 export function HeroDotBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
@@ -98,7 +98,7 @@ export function HeroDotBackground() {
       const baseA     = isDark ? DARK_BASE_A  : LIGHT_BASE_A
       const wavePeak  = isDark ? DARK_WAVE_PEAK  : LIGHT_WAVE_PEAK
       const mousePeak = isDark ? DARK_MOUSE_PEAK : LIGHT_MOUSE_PEAK
-      const maxA      = isDark ? 0.88 : 0.36
+      const maxA      = isDark ? 0.88 : 0.65
 
       const cols = Math.ceil(lw / SPACING) + 1
       const rows = Math.ceil(lh / SPACING) + 1
