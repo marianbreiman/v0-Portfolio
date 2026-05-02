@@ -1,6 +1,18 @@
 import { Resend } from "resend"
 import { NextResponse } from "next/server"
 
+// Temporal — eliminar después de confirmar que el email funciona
+export async function GET() {
+  const key = process.env.RESEND_API_KEY
+  return NextResponse.json({
+    keyPresent:  !!key,
+    keyPrefix:   key ? key.slice(0, 10) + "…" : null,
+    vercelEnv:   process.env.VERCEL_ENV   ?? "not-set",
+    nodeEnv:     process.env.NODE_ENV     ?? "not-set",
+    toEmail:     process.env.CONTACT_TO_EMAIL ?? "(default: marianbreiman@gmail.com)",
+  })
+}
+
 export async function POST(req: Request) {
   const apiKey = process.env.RESEND_API_KEY
   const TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "marianbreiman@gmail.com"
