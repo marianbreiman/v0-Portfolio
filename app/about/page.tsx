@@ -2,6 +2,7 @@ import Image from "next/image"
 import { HeroDotBackground } from "@/components/hero-dot-background"
 import { SectionHeading } from "@/components/section-heading"
 import { ScrollAnimation } from "@/components/scroll-animation"
+import { RunningCarousel } from "@/components/running-carousel"
 import { Calendar, ArrowRight, Footprints } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -84,6 +85,13 @@ const EDUCATION = [
     degree: "Bachiller Técnico en Diseño Industrial",
     type: "Formación técnica",
   },
+]
+
+// ─── Stats runner ─────────────────────────────────────────────────────────────
+const RUNNER_STATS = [
+  { value: "21K",        label: "Media Maratón" },
+  { value: "Constancia", label: "Cada semana en movimiento" },
+  { value: "Comunidad",  label: "Grupo de running" },
 ]
 
 function TypeBadge({ type }: { type: string }) {
@@ -284,15 +292,60 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── Fuera del diseño: una línea alcanza ── */}
-      <section className="pb-20">
-        <div className="container">
-          <p className="flex items-center gap-2 text-muted-foreground">
-            <Footprints className="h-4 w-4 text-primary" aria-hidden="true" />
-            Fuera del diseño, corro: hice una media maratón (21K) y entreno con un grupo de running.
-          </p>
+      {/* ══════════════════════════════════════════════════════
+          RUNNER — sección personal final
+      ══════════════════════════════════════════════════════ */}
+      <section className="py-16 md:py-24 bg-muted/20 relative overflow-hidden">
+        <div
+          className="orb w-[500px] h-[500px] -left-24 top-0 opacity-50"
+          style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.10) 0%, transparent 70%)" }}
+        />
+        <div
+          className="orb orb-secondary w-[400px] h-[400px] -right-20 bottom-0 opacity-40"
+          style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.12) 0%, transparent 70%)" }}
+        />
+
+        <div className="container relative z-10">
+          {/* Header: texto + stats */}
+          <ScrollAnimation>
+            <div className="grid md:grid-cols-2 gap-12 items-center mb-14">
+              <div className="space-y-6">
+                <div>
+                  <p className="chip mb-4 inline-flex gap-2">
+                    <Footprints className="h-3.5 w-3.5" />
+                    Fuera del diseño
+                  </p>
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                    También soy <span className="gradient-text">runner</span>
+                  </h2>
+                </div>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  El running se volvió una parte muy importante de mi vida. Me conecta con la
+                  disciplina, el esfuerzo sostenido y la superación personal. Y también con una
+                  comunidad de amigos y experiencias que me impulsan a seguir creciendo, dentro
+                  y fuera del diseño.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-6">
+                {RUNNER_STATS.map((stat) => (
+                  <div key={stat.label} className="project-card px-6 py-5 flex-1 min-w-[140px] text-center">
+                    <p className="text-2xl font-black gradient-text mb-1">{stat.value}</p>
+                    <p className="text-xs text-muted-foreground leading-snug">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </ScrollAnimation>
+
+          {/* Carrusel */}
+          <ScrollAnimation delay={100}>
+            <RunningCarousel />
+          </ScrollAnimation>
         </div>
       </section>
+
+
     </div>
   )
 }

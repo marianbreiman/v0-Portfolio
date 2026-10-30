@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react"
 import { ScrollAnimation } from "@/components/scroll-animation"
 import { PageHero } from "@/components/page-hero"
 import { CaseCard } from "@/components/case/case-card"
+import { BehanceGrid } from "@/components/behance-grid"
 import { CASE_STUDIES, PROCESS_PROJECTS } from "@/lib/case-studies"
 
 export const metadata: Metadata = {
@@ -11,15 +12,6 @@ export const metadata: Metadata = {
   description:
     "Casos de producto en Multitravel.com: checkout, medios de pago, búsqueda y backoffice, con números medidos en la base de producción.",
 }
-
-// Trabajo previo a Multitravel. Sin métricas: lo que hay está en Behance.
-const EARLIER_WORK = [
-  { title: "Orbit", detail: "Landing web y app · Cliente", url: "https://www.behance.net/gallery/184224897/Diseno-para-Orbit-Landing-Web-App" },
-  { title: "Future", detail: "App de orientación vocacional · Académico", url: "https://www.behance.net/gallery/125441469/Future-Prototipo-UxUi" },
-  { title: "Rediseño de Ualá", detail: "Ejercicio de rediseño · Académico", url: "https://www.behance.net/gallery/133580041/Rediseno-UXUI-Uala" },
-  { title: "Consorcio de Transportes de Madrid", detail: "Propuesta conceptual · Académico", url: "https://www.behance.net/gallery/184223321/Propuesta-para-el-Consorcio-de-Transportes-de-Madrid" },
-  { title: "Alleata", detail: "UX/UI challenge · Académico", url: "https://www.behance.net/gallery/184225635/Rediseno-para-alleata" },
-]
 
 export default function ProjectsPage() {
   const [principal, ...others] = CASE_STUDIES
@@ -111,24 +103,7 @@ export default function ProjectsPage() {
               Perfil de Behance <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {EARLIER_WORK.map((w) => (
-              <li key={w.title}>
-                <Link
-                  href={w.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between gap-4 rounded-xl border bg-card p-4 hover:border-primary/30 transition-colors"
-                >
-                  <span>
-                    <span className="block font-medium group-hover:text-primary transition-colors">{w.title}</span>
-                    <span className="block text-xs text-muted-foreground mt-0.5">{w.detail}</span>
-                  </span>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0" />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <BehanceGrid />
         </div>
       </section>
     </div>

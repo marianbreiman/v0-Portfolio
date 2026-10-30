@@ -18,7 +18,7 @@ function useHeroEntrance() {
 }
 
 interface HeroSectionProps {
-  stats?: Array<{ value: string; label: string }>
+  stats?: Array<{ value: string; label: string; when?: string }>
 }
 
 export function HeroSection({ stats = [] }: HeroSectionProps) {
@@ -208,6 +208,7 @@ export function HeroSection({ stats = [] }: HeroSectionProps) {
                   <div key={stat.label} className="space-y-1">
                     <p className="text-2xl md:text-3xl font-bold gradient-text tabular-nums whitespace-nowrap">{stat.value}</p>
                     <p className="text-xs text-muted-foreground tracking-wide uppercase">{stat.label}</p>
+                    {stat.when && <p className="text-[11px] font-medium text-primary/80">{stat.when}</p>}
                   </div>
                 ))}
               </div>

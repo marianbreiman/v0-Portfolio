@@ -8,21 +8,15 @@ import { AnimatedGradientBackground } from "@/components/animated-gradient-backg
 import { HeroSection } from "@/components/hero-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { CaseCard } from "@/components/case/case-card"
+import { CareerTimeline } from "@/components/career-timeline"
 import { CASE_STUDIES } from "@/lib/case-studies"
 import { TESTIMONIALS } from "@/lib/testimonials-data"
 
 // Datos reales. Los de conversión salen de la base de producción de Multitravel (30/10/2026).
 const STATS = [
-  { value: "1,21% → 1,70%", label: "Checkout → venta, vuelos" },
-  { value: "0% → 53%", label: "Ventas con tarjeta en USD" },
-  { value: "82", label: "Tickets con diseño en Linear" },
-]
-
-const WORKPLACES = [
-  { name: "Multitravel.com", role: "Product Designer · 2023 – hoy" },
-  { name: "Coderhouse", role: "Tutor de UX/UI · 2022" },
-  { name: "Orbit", role: "UX/UI Designer · 2021 – 2022" },
-  { name: "Tutenlabs", role: "UX/UI Designer · 2020 – 2022" },
+  { value: "1,21% → 1,70%", label: "Checkout → venta, vuelos", when: "Jul–sep vs. sep–oct 2026" },
+  { value: "0% → 53%", label: "Ventas con tarjeta en USD", when: "Mayo vs. octubre 2026" },
+  { value: "82", label: "Tickets con diseño en Linear", when: "Hasta octubre 2026" },
 ]
 
 const PROCESS = [
@@ -58,20 +52,6 @@ export default function Home() {
 
       <HeroSection stats={STATS} />
 
-      {/* ── Dónde trabajé ── */}
-      <section className="border-y border-border bg-muted/20">
-        <div className="container py-8">
-          <ul className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {WORKPLACES.map((w) => (
-              <li key={w.name}>
-                <p className="font-semibold">{w.name}</p>
-                <p className="text-xs text-muted-foreground mt-0.5">{w.role}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
       {/* ── Casos ── */}
       <section className="py-20 md:py-28">
         <div className="container">
@@ -105,6 +85,25 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── Recorrido ── */}
+      <section className="pb-20 md:pb-28">
+        <div className="container">
+          <ScrollAnimation>
+            <div className="max-w-2xl space-y-3 mb-10">
+              <p className="chip">Recorrido</p>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">De dónde vengo</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Diseño desde 2020: plataformas internas, sitios corporativos, docencia y, desde 2023, el
+                producto de una agencia de viajes online.
+              </p>
+            </div>
+          </ScrollAnimation>
+          <ScrollAnimation delay={80}>
+            <CareerTimeline />
+          </ScrollAnimation>
         </div>
       </section>
 

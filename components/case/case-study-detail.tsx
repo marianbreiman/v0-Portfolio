@@ -64,11 +64,17 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
             <div>
               <p className="text-4xl md:text-5xl font-bold tracking-tight tabular-nums">{study.headline.value}</p>
               <p className="mt-1 text-sm text-muted-foreground">{study.headline.label}</p>
+              <p className="mt-1.5 inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                {study.headline.when}
+              </p>
             </div>
             {study.secondary && (
               <div>
                 <p className="text-4xl md:text-5xl font-bold tracking-tight tabular-nums">{study.secondary.value}</p>
                 <p className="mt-1 text-sm text-muted-foreground">{study.secondary.label}</p>
+                <p className="mt-1.5 inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
+                  {study.secondary.when}
+                </p>
               </div>
             )}
           </div>

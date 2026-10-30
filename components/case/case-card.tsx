@@ -38,6 +38,9 @@ export function CaseCard({ study, featured = false }: { study: CaseStudy; featur
               {study.headline.value}
             </p>
             <p className="text-xs text-muted-foreground mt-0.5">{study.headline.label}</p>
+            <p className="mt-2 inline-flex rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary">
+              {study.headline.when}
+            </p>
           </div>
           <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
             Ver caso

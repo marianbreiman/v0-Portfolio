@@ -50,8 +50,9 @@ export interface CaseStudy {
   title: string
   kicker: string
   summary: string
-  headline: { value: string; label: string }
-  secondary?: { value: string; label: string }
+  // `when`: período exacto de la medición. Se muestra junto a cada número.
+  headline: { value: string; label: string; when: string }
+  secondary?: { value: string; label: string; when: string }
   result: string
   period: string
   role: string
@@ -82,8 +83,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     kicker: "Caso principal · Conversión",
     summary:
       "El checkout era un formulario en acordeones con un checkbox obligatorio frenando el pago. Lo pasé a una sola página clara, con el precio final y el botón siempre a mano.",
-    headline: { value: "1,21% → 1,70%", label: "Checkout → venta" },
-    secondary: { value: "26% → 44%", label: "Reservas que terminan pagadas" },
+    headline: { value: "1,21% → 1,70%", label: "Checkout → venta", when: "6 jul–9 sep vs. 10 sep–25 oct 2026" },
+    secondary: { value: "26% → 44%", label: "Reservas que terminan pagadas", when: "6 jul–9 sep vs. 10 sep–25 oct 2026" },
     result:
       "La conversión de checkout a venta pasó de 1,21% a 1,70%, un salto estadísticamente significativo. La proporción de reservas que terminan pagadas subió de 26% a 44%.",
     period: "Jul – Oct 2026 · en producción desde el 10/9",
@@ -203,7 +204,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     kicker: "Medios de pago · Adopción",
     summary:
       "Casi todos los vuelos internacionales se cotizan en dólares, pero la tarjeta solo funcionaba en pesos. Diseñé el flujo de pago en USD con Transbank, sin que el usuario se pierda en la redirección.",
-    headline: { value: "0% → 53%", label: "Ventas de vuelos con tarjeta en USD" },
+    headline: { value: "0% → 53%", label: "Ventas de vuelos con tarjeta en USD", when: "Mayo vs. octubre 2026" },
     result:
       "En octubre, 53% de las ventas de vuelos se pagó con tarjeta de crédito en dólares, un medio que en mayo no existía. Octubre fue además el mes con más ventas de vuelos del año.",
     period: "Jun – Oct 2026",
@@ -290,8 +291,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     kicker: "Búsqueda · Confianza en el precio",
     summary:
       "Las cards de las páginas de destino mandaban directo al checkout con un precio que muchas veces ya no existía. Ahora llevan a resultados y explican qué pasó con la tarifa.",
-    headline: { value: "0,1%", label: "Conversión del camino anterior" },
-    secondary: { value: "2 de cada 3", label: "Encontraban otro precio o sin lugar" },
+    headline: { value: "0,1%", label: "Conversión del camino anterior", when: "13 sep–13 oct 2026" },
+    secondary: { value: "2 de cada 3", label: "Encontraban otro precio o sin lugar", when: "13–30 oct 2026" },
     result:
       "Las cards de vuelo de las páginas de destino convertían al 0,1%: casi mil checkouts en un mes, una sola venta. Ahora llevan a resultados, y ahí se ve por qué: 2 de cada 3 personas que tocan una card encuentran otro precio o el vuelo ya no está.",
     period: "Oct 2026 · en producción desde el 13/10",
@@ -353,7 +354,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     kicker: "Backoffice · Autonomía comercial",
     summary:
       "Cada descuento dependía de desarrollo o se resolvía a mano por WhatsApp. Diseñé el módulo de cupones del backoffice y cómo se aplica en el checkout.",
-    headline: { value: "5,1% vs 1,7%", label: "Conversión con cupón vs. general (Multisale)" },
+    headline: { value: "5,1% vs 1,7%", label: "Conversión con cupón vs. general (Multisale)", when: "24–30 ago 2026" },
     result:
       "En la semana del Multisale, los checkouts con cupón convirtieron al 5,1%, contra 1,7% de todos los checkouts de esa semana. En agosto, casi 15% de las ventas usó cupón.",
     period: "Ago 2026 · Multisale del 24 al 30/8",
@@ -411,8 +412,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     kicker: "Buscador · Segunda visita",
     summary:
       "Comprar un vuelo lleva varias visitas y en cada una había que tipear todo de nuevo. Diseñé las búsquedas recientes y las sugerencias del buscador.",
-    headline: { value: "1,7", label: "Búsquedas por persona que usa las cards" },
-    secondary: { value: "1,6%", label: "Uso sobre búsquedas tipeadas (línea de base)" },
+    headline: { value: "1,7", label: "Búsquedas por persona que usa las cards", when: "26 ago–30 oct 2026" },
+    secondary: { value: "1,6%", label: "Uso sobre búsquedas tipeadas (línea de base)", when: "26 ago–30 oct 2026" },
     result:
       "Quien usa las cards de búsquedas recientes vuelve a usarlas: 1,7 búsquedas por persona en vuelos. Todavía es 1,6% de las búsquedas tipeadas a mano, así que lo presento como línea de base.",
     period: "Jul – Oct 2026 · cards en producción desde el 28/8",
@@ -470,7 +471,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     kicker: "Mobile · Usuarios logueados",
     summary:
       "En mobile, el modal de login quedaba tapado por el teclado. Lo pasé a una página completa y separé la mejora del código de verificación para que lo principal saliera antes.",
-    headline: { value: "11–17% → 25%", label: "Checkouts de vuelos con sesión iniciada" },
+    headline: { value: "11–17% → 25%", label: "Checkouts de vuelos con sesión iniciada", when: "Jun–ago vs. sep–oct 2026" },
     result:
       "La proporción de checkouts de vuelos con sesión iniciada pasó de entre 11 y 17% antes del cambio a 25% después. Es un indicador de adopción con otras causas posibles, no un resultado limpio.",
     period: "Ago 2026 · en producción desde el 18/8",
