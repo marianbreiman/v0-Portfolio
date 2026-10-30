@@ -18,7 +18,9 @@ export function CaseStudyDetail({ study }: { study: CaseStudy }) {
   const index = CASE_STUDIES.findIndex((c) => c.slug === study.slug)
   const next = CASE_STUDIES[(index + 1) % CASE_STUDIES.length]
   const ready = study.images.filter((i) => !i.pending)
-  const pending = study.images.filter((i) => i.pending)
+  // En producción las capturas pendientes no se muestran (ver CaseImage).
+  const showPending = process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"
+  const pending = showPending ? study.images.filter((i) => i.pending) : []
   const lead = ready.find((i) => i.device === "desktop")
   const rest = [...ready.filter((i) => i !== lead), ...pending]
 
