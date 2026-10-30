@@ -13,7 +13,7 @@ export default function Footer() {
               <span className="font-heading font-bold">Mariano Breiman</span>
             </Link>
             <p className="text-sm text-muted-foreground text-center md:text-left">
-              Product Designer creando experiencias digitales centradas en las personas
+              Product Designer en Multitravel.com · Buenos Aires
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-8 pt-6 border-t text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Mariano Breiman. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Mariano Breiman</p>
         </div>
       </div>
     </footer>

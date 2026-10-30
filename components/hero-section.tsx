@@ -131,7 +131,7 @@ export function HeroSection({ stats = [] }: HeroSectionProps) {
               }}
             >
               <MapPin className="h-3 w-3" />
-              Palermo, CABA, Argentina
+              Buenos Aires, Argentina
             </div>
 
             {/* Name + role */}
@@ -158,7 +158,7 @@ export function HeroSection({ stats = [] }: HeroSectionProps) {
                   transition: "opacity 0.8s 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s 0.42s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 }}
               >
-                Product Designer · UX/UI · Research
+                Product Designer en Multitravel.com
               </p>
             </div>
 
@@ -171,8 +171,8 @@ export function HeroSection({ stats = [] }: HeroSectionProps) {
                 transition: "opacity 0.8s 0.58s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s 0.58s cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
             >
-              Diseño productos digitales que conectan investigación, estrategia e interfaz
-              para transformar problemas complejos en decisiones claras para las personas.
+              Soy el único diseñador de producto de una agencia de viajes online. Diseño el recorrido
+              de la búsqueda al pago, lo prototipo funcionando y después mido en la base si funcionó.
             </p>
 
             {/* CTA row */}
@@ -206,7 +206,7 @@ export function HeroSection({ stats = [] }: HeroSectionProps) {
               >
                 {stats.map((stat) => (
                   <div key={stat.label} className="space-y-1">
-                    <p className="text-3xl font-bold gradient-text">{stat.value}</p>
+                    <p className="text-2xl md:text-3xl font-bold gradient-text tabular-nums whitespace-nowrap">{stat.value}</p>
                     <p className="text-xs text-muted-foreground tracking-wide uppercase">{stat.label}</p>
                   </div>
                 ))}

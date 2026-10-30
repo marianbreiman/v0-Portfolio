@@ -1,26 +1,29 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
-import { ProjectDetail } from "@/components/project-detail"
-import { getProjectBySlug, projects } from "@/lib/projects"
+import { CaseStudyDetail } from "@/components/case/case-study-detail"
+import { CASE_STUDIES, getCaseStudy } from "@/lib/case-studies"
 
 interface PageProps {
-  params: Promise<{
-    slug: string
-  }>
+  params: Promise<{ slug: string }>
 }
 
-export default async function ProjectPage({ params }: PageProps) {
+export default async function CaseStudyPage({ params }: PageProps) {
   const { slug } = await params
-  const project = getProjectBySlug(slug)
+  const study = getCaseStudy(slug)
+  if (!study) notFound()
+  return <CaseStudyDetail study={study} />
+}
 
-  if (!project) {
-    notFound()
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = await params
+  const study = getCaseStudy(slug)
+  if (!study) return {}
+  return {
+    title: `${study.title} · Multitravel | Mariano Breiman`,
+    description: study.summary,
   }
-
-  return <ProjectDetail project={project} />
 }
 
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }))
+  return CASE_STUDIES.map((c) => ({ slug: c.slug }))
 }

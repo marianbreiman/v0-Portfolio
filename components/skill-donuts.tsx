@@ -34,7 +34,7 @@ const SOFT = [
 
 // ─── Single donut ring ─────────────────────────────────────────────────────────
 function DonutRing({
-  pct,
+  label,
   name,
   sub,
   desc,
@@ -42,7 +42,7 @@ function DonutRing({
   delay,
   logoUrl,
 }: {
-  pct: number
+  label: string
   name: string
   sub: string
   desc?: string
@@ -51,7 +51,6 @@ function DonutRing({
   logoUrl?: string
 }) {
   const uid      = name.replace(/[^a-z0-9]/gi, "_").toLowerCase()
-  const fill     = animated ? CIRC * (1 - pct / 100) : CIRC
   const [tapped, setTapped] = useState(false)
 
   return (
@@ -61,7 +60,7 @@ function DonutRing({
       onMouseLeave={() => setTapped(false)}
       onClick={() => setTapped((v) => !v)}
       onKeyDown={(e) => e.key === "Enter" && setTapped((v) => !v)}
-      aria-label={`${name}: ${pct}%${desc ? `. ${desc}` : ""}`}
+      aria-label={`${name}: ${label}${desc ? `. ${desc}` : ""}`}
     >
       {/* ── Tooltip ── */}
       {desc && (
@@ -128,22 +127,9 @@ function DonutRing({
             strokeWidth={SW + 1}
           />
 
-          {/* Progress arc */}
-          <circle
-            cx={CX} cy={CY} r={R}
-            fill="none"
-            stroke={`url(#g-${uid})`}
-            strokeWidth={SW}
-            strokeLinecap="round"
-            strokeDasharray={CIRC}
-            style={{
-              strokeDashoffset: fill,
-              transition: `stroke-dashoffset 950ms cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-            }}
-          />
         </svg>
 
-        {/* Center: brand logo (default) → pct on hover */}
+        {/* Center: brand logo */}
         <div className="absolute inset-0 flex items-center justify-center">
           {logoUrl ? (
             <>
@@ -153,16 +139,13 @@ function DonutRing({
                 alt={name}
                 width={22}
                 height={22}
-                className="logo-icon object-contain transition-opacity duration-200 group-hover:opacity-0"
+                className="logo-icon object-contain"
                 onError={(e) => { e.currentTarget.style.display = "none" }}
               />
-              <span className="absolute text-[11px] font-bold tabular-nums text-foreground leading-none opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                {pct}%
-              </span>
             </>
           ) : (
-            <span className="text-[11px] font-bold tabular-nums text-foreground leading-none">
-              {pct}%
+            <span className="text-[11px] font-bold text-foreground leading-none">
+              {name.slice(0, 2)}
             </span>
           )}
         </div>
@@ -173,7 +156,7 @@ function DonutRing({
         <p className="text-[11px] font-semibold leading-tight text-foreground break-words hyphens-auto group-hover:text-primary transition-colors duration-200">
           {name}
         </p>
-        <p className="text-[10px] text-muted-foreground leading-tight">{sub}</p>
+        <p className="text-[10px] text-muted-foreground leading-tight">{label}</p>
       </div>
     </div>
   )
@@ -234,7 +217,7 @@ export function SkillDonuts() {
                 {cat.skills.map((tool) => (
                   <DonutRing
                     key={tool.name}
-                    pct={tool.pct}
+                    label={tool.label}
                     name={tool.name}
                     sub={tool.sub}
                     desc={tool.desc}
@@ -284,22 +267,11 @@ export function SkillDonuts() {
             Idiomas
           </p>
           <div className="rounded-xl border border-border bg-card p-4 space-y-4">
-            {LANGUAGES.map((lang, idx) => (
+            {LANGUAGES.map((lang) => (
               <div key={lang.name}>
-                <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold">{lang.name}</span>
                   <span className="text-[11px] text-muted-foreground">{lang.level}</span>
-                </div>
-                <div className="h-1.5 rounded-full overflow-hidden bg-muted">
-                  <div
-                    className="h-full rounded-full"
-                    style={{
-                      width: animated ? `${lang.pct}%` : "0%",
-                      background:
-                        "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)))",
-                      transition: `width 900ms cubic-bezier(0.16,1,0.3,1) ${idx * 120 + 350}ms`,
-                    }}
-                  />
                 </div>
               </div>
             ))}

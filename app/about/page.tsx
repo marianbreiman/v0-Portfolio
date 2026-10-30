@@ -2,40 +2,10 @@ import Image from "next/image"
 import { HeroDotBackground } from "@/components/hero-dot-background"
 import { SectionHeading } from "@/components/section-heading"
 import { ScrollAnimation } from "@/components/scroll-animation"
-import { RunningCarousel } from "@/components/running-carousel"
-import { Heart, RefreshCw, Lightbulb, Zap, Palette, Calendar, ArrowRight, Footprints } from "lucide-react"
+import { Calendar, ArrowRight, Footprints } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-
-// ─── Valores ──────────────────────────────────────────────────────────────────
-const VALUES = [
-  {
-    icon: Heart,
-    title: "Empatía",
-    description: "Escucho antes de proponer. Entender al usuario no es un paso del proceso, es el punto de partida.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Claridad",
-    description: "Prefiero lo simple bien pensado a lo complejo mal justificado. Diseño para que se entienda.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Iteración",
-    description: "Nada queda perfecto en el primer intento. Refino basándome en evidencia, no en opiniones.",
-  },
-  {
-    icon: Zap,
-    title: "Funcionalidad",
-    description: "Un diseño que no puede implementarse, no sirve. Pienso en viabilidad desde el inicio.",
-  },
-  {
-    icon: Palette,
-    title: "Estética con propósito",
-    description: "Lo visual no es decoración. Cada decisión gráfica tiene una función en la experiencia.",
-  },
-]
 
 // ─── Experiencia ──────────────────────────────────────────────────────────────
 const EXPERIENCE = [
@@ -44,14 +14,7 @@ const EXPERIENCE = [
     role: "Product Designer",
     company: "Multitravel.com",
     description:
-      "Lidero el diseño de soluciones para la industria de viajes, alineando objetivos de negocio con necesidades reales de usuarios. Optimización del funnel de conversión, diseño de experiencias móviles y escritorio, e implementación de features como filtros avanzados, checkout y cupones.",
-  },
-  {
-    period: "Jul. 2020 – Ene. 2022",
-    role: "UX/UI Designer",
-    company: "Tutenlabs",
-    description:
-      "Diseñé plataformas internas para gestión de operaciones. Colaboré con equipos de desarrollo en sprints ágiles, definiendo flujos complejos, wireframes y prototipos funcionales.",
+      "Único diseñador de producto de una agencia de viajes online. Rediseñé el checkout de vuelos y diseñé el pago con tarjeta en dólares, las búsquedas recientes y el sistema de cupones, además de los módulos del backoffice. Mido los cambios en la base de producción.",
   },
   {
     period: "Mar. 2022 – Ago. 2022",
@@ -66,6 +29,13 @@ const EXPERIENCE = [
     company: "Orbit",
     description:
       "Trabajé en el rediseño de sitios corporativos con foco en mobile-first y accesibilidad. Participé en testeo de usabilidad y definiciones visuales.",
+  },
+  {
+    period: "Jul. 2020 – Ene. 2022",
+    role: "UX/UI Designer",
+    company: "Tutenlabs",
+    description:
+      "Diseñé plataformas internas para gestión de operaciones. Colaboré con equipos de desarrollo en sprints ágiles, definiendo flujos complejos, wireframes y prototipos funcionales.",
   },
 ]
 
@@ -114,13 +84,6 @@ const EDUCATION = [
     degree: "Bachiller Técnico en Diseño Industrial",
     type: "Formación técnica",
   },
-]
-
-// ─── Stats runner ─────────────────────────────────────────────────────────────
-const RUNNER_STATS = [
-  { value: "21K",        label: "Media Maratón" },
-  { value: "Constancia", label: "Cada semana en movimiento" },
-  { value: "Comunidad",  label: "Grupo de running" },
 ]
 
 function TypeBadge({ type }: { type: string }) {
@@ -184,19 +147,18 @@ export default function AboutPage() {
 
               <div style={{ animation: "slide-in 0.7s ease-out 0.5s both" }} className="space-y-5">
                 <p className="text-xl leading-relaxed text-foreground/80">
-                  Product Designer especializado en experiencias web y mobile. Trabajo donde se cruzan
-                  la investigación, la estrategia y el diseño visual para construir productos que
-                  tienen sentido.
+                  Hace casi 4 años soy el único diseñador de producto de Multitravel.com, una agencia
+                  de viajes online argentina. Trabajo entre producto, comercial y desarrollo.
                 </p>
                 <div className="space-y-3 text-muted-foreground leading-relaxed">
                   <p>
-                    Me formé en Diseño Industrial (Universidad de Palermo) y me especialicé en UX/UI
-                    a través de la práctica real. He trabajado en el sector turístico, plataformas SaaS,
-                    educación digital y proyectos freelance.
+                    Diseño el sitio de venta, de la búsqueda al pago, y los módulos de MultiOps, el
+                    backoffice donde comercial y operaciones configuran el sitio. Prototipo funcionando
+                    con Lorien, nuestro sistema de diseño, y después mido en la base si el cambio sirvió.
                   </p>
                   <p>
-                    Lo que más me importa es entender el problema antes de proponer soluciones.
-                    No diseño pantallas: diseño experiencias que resuelven algo concreto para alguien concreto.
+                    Antes diseñé plataformas internas en Tutenlabs y sitios corporativos en Orbit, y fui
+                    tutor de UX/UI en Coderhouse. Me formé como Diseñador Industrial en la Universidad de Palermo.
                   </p>
                 </div>
                 <Button asChild className="btn-primary-glow group">
@@ -235,37 +197,6 @@ export default function AboutPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════
-          FILOSOFÍA / ENFOQUE
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 bg-muted/20 relative">
-        <div className="container">
-          <ScrollAnimation>
-            <div className="max-w-2xl mx-auto text-center space-y-3 mb-14">
-              <p className="chip mx-auto">Mi forma de pensar</p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">Lo que guía mi trabajo</h2>
-              <p className="text-muted-foreground leading-relaxed">
-                Principios que aplico en cada proyecto, sin importar el contexto o la etapa del producto.
-              </p>
-            </div>
-          </ScrollAnimation>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
-            {VALUES.map((value, index) => (
-              <ScrollAnimation key={index} delay={index * 70}>
-                <div className="project-card p-6 h-full group cursor-default text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 text-primary mb-5 transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110">
-                    <value.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="font-bold mb-2.5 text-sm">{value.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{value.description}</p>
-                </div>
-              </ScrollAnimation>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════
           EXPERIENCIA + EDUCACIÓN — grid 50/50
       ══════════════════════════════════════════════════════ */}
       <section className="py-16 md:py-24">
@@ -279,7 +210,7 @@ export default function AboutPage() {
                   <p className="chip mb-3">Trayectoria</p>
                   <SectionHeading
                     title="Experiencia laboral"
-                    subtitle="Proyectos reales, equipos reales, problemas reales."
+                    subtitle="De lo más reciente a lo más antiguo."
                   />
                 </div>
               </ScrollAnimation>
@@ -353,60 +284,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════
-          RUNNER — sección personal final
-      ══════════════════════════════════════════════════════ */}
-      <section className="py-16 md:py-24 bg-muted/20 relative overflow-hidden">
-        <div
-          className="orb w-[500px] h-[500px] -left-24 top-0 opacity-50"
-          style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.10) 0%, transparent 70%)" }}
-        />
-        <div
-          className="orb orb-secondary w-[400px] h-[400px] -right-20 bottom-0 opacity-40"
-          style={{ background: "radial-gradient(circle, hsl(var(--secondary)/0.12) 0%, transparent 70%)" }}
-        />
-
-        <div className="container relative z-10">
-          {/* Header: texto + stats */}
-          <ScrollAnimation>
-            <div className="grid md:grid-cols-2 gap-12 items-center mb-14">
-              <div className="space-y-6">
-                <div>
-                  <p className="chip mb-4 inline-flex gap-2">
-                    <Footprints className="h-3.5 w-3.5" />
-                    Fuera del diseño
-                  </p>
-                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-                    También soy <span className="gradient-text">runner</span>
-                  </h2>
-                </div>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  El running se volvió una parte muy importante de mi vida. Me conecta con la
-                  disciplina, el esfuerzo sostenido y la superación personal. Y también con una
-                  comunidad de amigos y experiencias que me impulsan a seguir creciendo, dentro
-                  y fuera del diseño.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-6">
-                {RUNNER_STATS.map((stat) => (
-                  <div key={stat.label} className="project-card px-6 py-5 flex-1 min-w-[140px] text-center">
-                    <p className="text-2xl font-black gradient-text mb-1">{stat.value}</p>
-                    <p className="text-xs text-muted-foreground leading-snug">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollAnimation>
-
-          {/* Carrusel */}
-          <ScrollAnimation delay={100}>
-            <RunningCarousel />
-          </ScrollAnimation>
+      {/* ── Fuera del diseño: una línea alcanza ── */}
+      <section className="pb-20">
+        <div className="container">
+          <p className="flex items-center gap-2 text-muted-foreground">
+            <Footprints className="h-4 w-4 text-primary" aria-hidden="true" />
+            Fuera del diseño, corro: hice una media maratón (21K) y entreno con un grupo de running.
+          </p>
         </div>
       </section>
-
-
     </div>
   )
 }

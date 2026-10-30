@@ -21,8 +21,7 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   title: "Mariano Breiman | Product Designer",
   description:
-    "Portfolio de Mariano Breiman, Product Designer especializado en crear experiencias digitales intuitivas, útiles y centradas en las personas.",
-    generator: 'v0.app'
+    "Mariano Breiman, Product Designer en Multitravel.com. Casos de checkout, medios de pago y búsqueda en una agencia de viajes online, con resultados medidos.",
 }
 
 export default function RootLayout({
