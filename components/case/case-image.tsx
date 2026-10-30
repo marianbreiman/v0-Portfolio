@@ -10,6 +10,8 @@ export function CaseImage({ image, className }: { image: CaseImageData; classNam
   const isMobile = image.device === "mobile"
 
   if (image.pending || !image.src) {
+    // En producción no se muestran los recuadros pendientes; en preview y local, sí.
+    if (process.env.NEXT_PUBLIC_VERCEL_ENV === "production") return null
     return (
       <figure className={cn("space-y-3", className)}>
         <div
