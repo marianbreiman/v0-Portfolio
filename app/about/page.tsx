@@ -11,11 +11,18 @@ import { cn } from "@/lib/utils"
 // ─── Experiencia ──────────────────────────────────────────────────────────────
 const EXPERIENCE = [
   {
-    period: "Ene. 2023 – Presente",
+    period: "Abr. 2023 – Presente",
     role: "Product Designer",
     company: "Multitravel.com",
     description:
       "Único diseñador de producto de una agencia de viajes online. Rediseñé el checkout de vuelos y diseñé el pago con tarjeta en dólares, las búsquedas recientes y el sistema de cupones, además de los módulos del backoffice. Mido los cambios en la base de producción.",
+  },
+  {
+    period: "Abr. 2022 – Dic. 2022",
+    role: "UX/UI Designer",
+    company: "Tutenlabs",
+    description:
+      "Diseñé plataformas internas para gestión de operaciones. Colaboré con equipos de desarrollo en sprints ágiles, definiendo flujos complejos, wireframes y prototipos funcionales.",
   },
   {
     period: "Mar. 2022 – Ago. 2022",
@@ -30,13 +37,6 @@ const EXPERIENCE = [
     company: "Orbit",
     description:
       "Trabajé en el rediseño de sitios corporativos con foco en mobile-first y accesibilidad. Participé en testeo de usabilidad y definiciones visuales.",
-  },
-  {
-    period: "Jul. 2020 – Ene. 2022",
-    role: "UX/UI Designer",
-    company: "Tutenlabs",
-    description:
-      "Diseñé plataformas internas para gestión de operaciones. Colaboré con equipos de desarrollo en sprints ágiles, definiendo flujos complejos, wireframes y prototipos funcionales.",
   },
 ]
 
@@ -155,7 +155,7 @@ export default function AboutPage() {
 
               <div style={{ animation: "slide-in 0.7s ease-out 0.5s both" }} className="space-y-5">
                 <p className="text-xl leading-relaxed text-foreground/80">
-                  Hace casi 4 años soy el único diseñador de producto de Multitravel.com, una agencia
+                  Hace más de 3 años soy el único diseñador de producto de Multitravel.com, una agencia
                   de viajes online argentina. Trabajo entre producto, comercial y desarrollo.
                 </p>
                 <div className="space-y-3 text-muted-foreground leading-relaxed">
@@ -165,8 +165,8 @@ export default function AboutPage() {
                     con Lorien, nuestro sistema de diseño, y después mido en la base si el cambio sirvió.
                   </p>
                   <p>
-                    Antes diseñé plataformas internas en Tutenlabs y sitios corporativos en Orbit, y fui
-                    tutor de UX/UI en Coderhouse. Me formé como Diseñador Industrial en la Universidad de Palermo.
+                    Antes diseñé sitios corporativos en Orbit, fui tutor de UX/UI en Coderhouse y diseñé
+                    plataformas internas en Tutenlabs. Me formé como Diseñador Industrial en la Universidad de Palermo.
                   </p>
                 </div>
                 <Button asChild className="btn-primary-glow group">

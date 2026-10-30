@@ -80,7 +80,7 @@ Abr. 2023 – Presente
 
 ### UX/UI Designer
 Tutenlabs
-Jul. 2020 – Ene. 2022
+Abr. 2022 – Dic. 2022
 - Diseñé interfaces, flujos y prototipos funcionales para plataformas digitales internas, colaborando con Product Owners, product managers, diseñadores y desarrolladores.
 - Participé en la definición de soluciones UX/UI para problemas complejos, fortaleciendo mi criterio de producto y mi capacidad de trabajo cross-functional.
 - Desarrollé entregables de diseño y documentación para acompañar la implementación de funcionalidades.

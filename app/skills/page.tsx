@@ -4,7 +4,7 @@ import { SkillDonuts } from "@/components/skill-donuts"
 import { PageHero } from "@/components/page-hero"
 import {
   Monitor, Layout, Zap, Eye, Layers, PenTool,
-  Brain, BarChart2, Rocket, Search, GitMerge, FileText,
+  Brain, BarChart2, Rocket, Search, GitMerge, FileText, ListChecks, Code2,
 } from "lucide-react"
 
 // ─── Diseño & UX ──────────────────────────────────────────────────────────────
@@ -43,6 +43,16 @@ const DESIGN_SKILLS = [
 
 // ─── Proceso & Estrategia ─────────────────────────────────────────────────────
 const PROCESS_SKILLS = [
+  {
+    icon: ListChecks,
+    name: "Organización de producto",
+    desc: "Bajo pedidos de producto y comercial a definiciones con estados, bordes y reglas. Parto el trabajo en tickets chicos, decido qué sale primero y dejo marcadas las dependencias para desarrollo.",
+  },
+  {
+    icon: Code2,
+    name: "Vibe coding",
+    desc: "Prototipo funcionando en HTML y React con Claude y Cursor, sobre nuestro sistema de diseño. Desarrollo prueba el flujo real antes de programar. Este portfolio también está hecho así.",
+  },
   {
     icon: Brain,
     name: "Design Thinking & HCD",

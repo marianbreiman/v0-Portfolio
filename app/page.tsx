@@ -16,7 +16,6 @@ import { TESTIMONIALS } from "@/lib/testimonials-data"
 const STATS = [
   { value: "1,21% → 1,70%", label: "Checkout → venta, vuelos", when: "Jul–sep vs. sep–oct 2026" },
   { value: "0% → 53%", label: "Ventas con tarjeta en USD", when: "Mayo vs. octubre 2026" },
-  { value: "82", label: "Tickets con diseño en Linear", when: "Hasta octubre 2026" },
 ]
 
 const PROCESS = [
@@ -96,7 +95,7 @@ export default function Home() {
               <p className="chip">Recorrido</p>
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">De dónde vengo</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Diseño desde 2020: plataformas internas, sitios corporativos, docencia y, desde 2023, el
+                Diseño desde 2021: sitios corporativos, docencia, plataformas internas y, desde 2023, el
                 producto de una agencia de viajes online.
               </p>
             </div>

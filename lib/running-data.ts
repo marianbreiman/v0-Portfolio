@@ -12,6 +12,14 @@ export interface RunningItem {
 
 export const runningItems: RunningItem[] = [
   {
+    id: "0",
+    title: "Post de running",
+    type: "post",
+    thumbnail: null,
+    embedUrl: "https://www.instagram.com/p/DcbUi_CETj6/embed/",
+    instagramUrl: "https://www.instagram.com/p/DcbUi_CETj6/",
+  },
+  {
     id: "1",
     title: "Post de running",
     type: "post",

@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils"
 
 // Recorrido laboral en una línea de tiempo. Cada barra ocupa el período real,
 // así se ven las superposiciones y los huecos tal como fueron.
-const START_YEAR = 2020
+const START_YEAR = 2021
 const END_YEAR = 2026
 const TOTAL_MONTHS = (END_YEAR - START_YEAR + 1) * 12
 
@@ -17,14 +17,6 @@ interface Job {
 }
 
 const JOBS: Job[] = [
-  {
-    company: "Tutenlabs",
-    role: "UX/UI Designer",
-    from: [2020, 7],
-    to: [2022, 1],
-    period: "Jul 2020 – Ene 2022",
-    summary: "Plataformas internas para gestión de operaciones, en sprints con desarrollo.",
-  },
   {
     company: "Orbit",
     role: "Junior UX/UI Designer",
@@ -42,11 +34,19 @@ const JOBS: Job[] = [
     summary: "Guié a estudiantes en proyectos reales de UX/UI.",
   },
   {
+    company: "Tutenlabs",
+    role: "UX/UI Designer",
+    from: [2022, 4],
+    to: [2022, 12],
+    period: "Abr – Dic 2022",
+    summary: "Plataformas internas para gestión de operaciones, en sprints con desarrollo.",
+  },
+  {
     company: "Multitravel.com",
     role: "Product Designer",
-    from: [2023, 1],
+    from: [2023, 4],
     to: "hoy",
-    period: "Ene 2023 – hoy",
+    period: "Abr 2023 – hoy",
     summary: "Único diseñador de producto: checkout, medios de pago, búsqueda y el backoffice MultiOps.",
     current: true,
   },
